@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd"
+	default-autowire="byName">
+    <!-- ======================================================================== -->
+    <!--  DAO                                                               -->
+    <!-- ======================================================================== -->
+    <bean id="dnmAccountDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmAccountDAO" parent="baseDAO"/>
+    <bean id="dnmAccountLogDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmAccountLogDAO" parent="baseDAO"/>
+    <bean id="dnmAccountTransLogDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmAccountTransLogDAO" parent="baseDAO"/>
+    <bean id="dnmBankDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmBankDAO" parent="baseDAO"/>
+    <bean id="dnmInvestDueinRcdDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmInvestDueinRcdDAO" parent="baseDAO"/>
+    <bean id="dnmInvestFromAccountDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmInvestFromAccountDAO" parent="baseDAO"/>
+    <bean id="dnmInvestPriceCostDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmInvestPriceCostDAO" parent="baseDAO"/>
+    <bean id="dnmInvestRcdDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmInvestRcdDAO" parent="baseDAO"/>
+    <bean id="dnmPlatformDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmPlatformDAO" parent="baseDAO"/>
+    <bean id="dnmPlatformUserDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmPlatformUserDAO" parent="baseDAO"/>
+    <bean id="dnmPlatformUserAccountDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmPlatformUserAccountDAO" parent="baseDAO"/>
+    <bean id="dnmUserDAO" class="com.dnm.core.common.dal.ibatis.IbatisDnmUserDAO" parent="baseDAO"/>
+    <bean id="sequenceDAO" class="com.dnm.core.common.dal.ibatis.IbatisSequenceDAO" parent="baseDAO"/>
+
+	<bean id="extraDAO" class="com.dnm.core.common.dal.ibatis.IbatisExtraDAO" parent="baseDAO"/>
+
+</beans>

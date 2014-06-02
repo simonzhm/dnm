@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+    <settings cacheModelsEnabled="true" enhancementEnabled="false" lazyLoadingEnabled="false" maxRequests="3000" maxSessions="3000" maxTransactions="3000" useStatementNamespaces="false"/>    
+    <sqlMap resource="sqlmap/common-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmAccount-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmAccountLog-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmAccountTransLog-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmBank-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmInvestDueinRcd-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmInvestFromAccount-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmInvestPriceCost-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmInvestRcd-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmPlatform-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmPlatformUser-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmPlatformUserAccount-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/DnmUser-sqlmap-mapping.xml"/>
+    <sqlMap resource="sqlmap/Sequence-sqlmap-mapping.xml"/>
+
+	<sqlMap resource="sqlmap/extra-sqlmap-mapping.xml"/>
+
+</sqlMapConfig>

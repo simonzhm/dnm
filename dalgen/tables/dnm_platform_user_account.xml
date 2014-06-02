@@ -1,0 +1,39 @@
+<!-- ===================================================================== -->
+<!-- Table configuration file for auto-generation of iwallet dal. -->
+<!-- $Id: itc_base.xml,v 1.00 2012/11/21 17:30:21 Toby Exp $ -->
+<!-- ===================================================================== -->
+
+<table sqlname="DNM_platform_user_account" dummypk="ACCOUNT_ID">
+
+
+	<operation name="insert">
+		<sql>
+			<![CDATA[
+					insert into dnm_platform_user_account
+					  (account_id, sub_account_type, platform_user_id)
+					values
+					  (?, ?, ?)
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="load">
+		<sql>
+			<![CDATA[
+					select account_id, sub_account_type, platform_user_id
+					from dnm_platform_user
+					where account_id = ?
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="loadByUserAndType">
+		<sql>
+			<![CDATA[
+					select account_id, sub_account_type, platform_user_id
+					from dnm_platform_user
+					where platform_user_id = ? and sub_account_type = ?
+        	]]>
+		</sql>
+	</operation>
+</table>

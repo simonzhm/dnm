@@ -1,0 +1,19 @@
+#parse("copyright.vm")
+package ${table.DOPackage};
+
+// auto generated imports
+#foreach($importClass in $table.doImports) 
+import $importClass;
+#end
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
+/**
+ * A data object class directly models database table <tt>$table.sqlName</tt>.
+ *
+#parse("description-java.vm")
+ */
+public class ${table.DOClassName} {
+
+#parse("do-fields.vm")
+}

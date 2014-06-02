@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+ xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- ==checker begin=============================================== -->
+	<!-- ==所有请求单据，如果需要配置校验器，则在此定义，名称规迥为请求单据的类名+Checker，如果找不到对应Checker，则默认使用defaultRequestChecker -->
+	<bean id="defaultRequestChecker" class="com.dnm.biz.checker.DefaultRequestChecker"/>
+	<bean id="openAccountRequestChecker" class="com.dnm.biz.checker.OpenAccountRequestChecker"/>
+	<!-- ==checker end================================================= -->
+	
+	
+	<!-- encrypter -->
+	<bean id="encrypterFactory" class="com.dnm.biz.encrypter.EncrypterFactory">
+		<property name="encrypterMap">
+			<map>
+				<entry key="DEFAULT">
+					<ref bean="defaultEncrypter"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="defaultEncrypter" class="com.dnm.biz.encrypter.DefaultEncrypter"/>
+	
+	<!-- service -->
+	<bean id="userServiceFacade" class="com.dnm.biz.service.impl.UserServiceFacadeImpl"/>
+	<bean id="accountServiceFacade" class="com.dnm.biz.service.impl.AccountServiceFacadeImpl"/>
+	<bean id="bankServiceFacade" class="com.dnm.biz.service.impl.BankServiceFacadeImpl"/>
+	<bean id="platformServiceFacade" class="com.dnm.biz.service.impl.PlatformServiceFacadeImpl"/>
+	<bean id="accountTransferServiceFacade" class="com.dnm.biz.service.impl.AccountTransferServiceFacadeImpl"/>
+	<bean id="investServiceFacade" class="com.dnm.biz.service.impl.InvestServiceFacadeImpl"/>
+	
+	<!-- AutoProxy -->
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+	   <property name="beanNames">
+	     <list>
+	       <value>*ServiceFacade</value>
+	     </list>
+	   </property>
+	   <property name="interceptorNames">
+	     <list>
+	        <value>requestOrderAdvisor</value>
+	     </list> 
+	   </property>
+	 </bean>
+	
+	<!-- advisor -->
+	<bean id="requestOrderAdvisor" 
+	    class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+	    <property name="advice">
+	        <ref bean="requestOrderAdvice"/>
+	    </property>
+	    <property name="patterns">
+	        <list>
+	            <value>com.dnm.biz.service.impl.*Facade*.*</value>
+	        </list>
+	    </property>
+	</bean>
+		
+	<!-- interceptor-->
+	<bean id="requestOrderAdvice" class="com.dnm.biz.interceptor.RequestOrderAdvice"/>
+	
+	
+	<!--BeanPostProcessor -->
+	<bean  class="com.dnm.biz.adapter.spring.RequestOrderBeanPostProcessorImpl"/>
+</beans>

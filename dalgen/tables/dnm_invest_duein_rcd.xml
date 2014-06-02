@@ -1,0 +1,30 @@
+<!-- ===================================================================== -->
+<!-- Table configuration file for auto-generation of iwallet dal. -->
+<!-- $Id: itc_base.xml,v 1.00 2012/11/21 17:30:21 Toby Exp $ -->
+<!-- ===================================================================== -->
+
+<table sqlname="DNM_INVEST_DUEIN_RCD" dummypk="ID">
+	<column name="repay_amt" javatype="java.math.BigDecimal"/>
+	<column name="repay_interest_amt" javatype="java.math.BigDecimal"/>
+	
+	<operation name="insert">
+		<sql>
+			<![CDATA[
+					insert into dnm_invest_duein_rcd
+					  (id, rcd_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified)
+					values
+					  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="load">
+		<sql>
+			<![CDATA[
+					select id, rcd_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified
+					from dnm_invest_duein_rcd
+					where id = ?
+        	]]>
+		</sql>
+	</operation>
+</table>

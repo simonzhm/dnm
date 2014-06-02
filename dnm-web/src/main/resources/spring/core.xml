@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+ xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- 领域服务开始 -->
+	<!--factory -->
+	<bean id="userFactory" class="com.dnm.core.service.domain.factory.impl.UserFactoryImpl"/>
+	<bean id="accountFactory" class="com.dnm.core.service.domain.factory.impl.AccountFactoryImpl"/>
+	<bean id="bankFactory" class="com.dnm.core.service.domain.factory.impl.BankFactoryImpl"/>
+	<bean id="platformFactory" class="com.dnm.core.service.domain.factory.impl.PlatformFactoryImpl"/>
+	<bean id="accountTransLogFactory" class="com.dnm.core.service.domain.factory.impl.AccountTransLogFactoryImpl"/>
+	<bean id="investRecordFactory" class="com.dnm.core.service.domain.factory.impl.InvestRecordFactoryImpl"/>
+	
+	<!--sevice -->
+	<bean id="abstractDomainService" class="com.dnm.core.service.domain.AbstractDomainService" abstract="true">
+		<property name="dataAccessorContainer">
+			<map>
+				<entry key="USER">
+					<ref bean="userAccessor"/>
+				</entry>
+				<entry key="ACCOUNT">
+					<ref bean="accountAccessor"/>
+				</entry>
+				<entry key="ACCOUNT_FOR_TRANS_LOG">
+					<ref bean="accountForTransLogAccessor"/>
+				</entry>
+				<entry key="BANK">
+					<ref bean="bankAccessor"/>
+				</entry>
+				<entry key="PLATFORM">
+					<ref bean="platformAccessor"/>
+				</entry>
+				<entry key="PLATFORM_USER">
+					<ref bean="platformUserAccessor"/>
+				</entry>
+				<entry key="PLATFORM_USER_ACCOUNT">
+					<ref bean="platformUserAccountAccessor"/>
+				</entry>
+				<entry key="ACCOUNT_TRANS_LOG">
+					<ref bean="accountTransLogAccessor"/>
+				</entry>
+				<entry key="ACCOUNT_LOG">
+					<ref bean="accountLogAccessor"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<!--accessor -->
+	<bean id="userAccessor" class="com.dnm.core.service.domain.repository.access.impl.UserAccessor"/>
+	<bean id="accountAccessor" class="com.dnm.core.service.domain.repository.access.impl.AccountAccessor"/>
+	<bean id="accountForTransLogAccessor" class="com.dnm.core.service.domain.repository.access.impl.AccountForTransLogAccessor"/>
+	<bean id="bankAccessor" class="com.dnm.core.service.domain.repository.access.impl.BankAccessor"/>
+	<bean id="platformAccessor" class="com.dnm.core.service.domain.repository.access.impl.PlatformAccessor"/>
+	<bean id="platformUserAccessor" class="com.dnm.core.service.domain.repository.access.impl.PlatformUserAccessor"/>
+	<bean id="platformUserAccountAccessor" class="com.dnm.core.service.domain.repository.access.impl.PlatformUserAccountAccessor"/>
+	<bean id="accountTransLogAccessor" class="com.dnm.core.service.domain.repository.access.impl.AccountTransLogAccessor"/>
+	<bean id="accountLogAccessor" class="com.dnm.core.service.domain.repository.access.impl.AccountLogAccessor"/>
+	
+	<!--service -->
+	<bean id="userDomainService" class="com.dnm.core.service.domain.impl.UserDomainServiceImpl" parent="abstractDomainService"/>
+	<bean id="accountDomainService" class="com.dnm.core.service.domain.impl.AccountDomainServiceImpl" parent="abstractDomainService"/>
+	<bean id="bankDomainService" class="com.dnm.core.service.domain.impl.BankDomainServiceImpl" parent="abstractDomainService"/>
+	<bean id="platformDomainService" class="com.dnm.core.service.domain.impl.PlatformDomainServiceImpl" parent="abstractDomainService"/>
+	<bean id="accountTransferDomainService" class="com.dnm.core.service.domain.impl.AccountTransferDomainServiceImpl" parent="abstractDomainService"/>
+	<bean id="investDomainService" class="com.dnm.core.service.domain.impl.InvestDomainServiceImpl" parent="abstractDomainService"/>
+	
+	<!--repository -->
+	<bean id="userRepository" class="com.dnm.core.service.domain.repository.impl.UserRepositoryImpl" parent="abstractDomainService"/>
+	<bean id="accountRepository" class="com.dnm.core.service.domain.repository.impl.AccountRepositoryImpl" parent="abstractDomainService"/>
+	<bean id="bankRepository" class="com.dnm.core.service.domain.repository.impl.BankRepositoryImpl" parent="abstractDomainService"/>
+	<bean id="platformRepository" class="com.dnm.core.service.domain.repository.impl.PlatformRepositoryImpl" parent="abstractDomainService"/>
+	<bean id="accountTransLogRepository" class="com.dnm.core.service.domain.repository.impl.AccountTransLogRepositoryImpl" parent="abstractDomainService"/>
+	<!-- 领域服务结束 -->
+	
+	<!--adaptor -->
+	<bean id="bankModelAdapter" class="com.dnm.core.service.domain.adapter.impl.BankModelAdapterImpl"/>
+	<bean id="platformModelAdapter" class="com.dnm.core.service.domain.adapter.impl.PlatformModelAdapterImpl"/>
+	<bean id="accountTransLogAdapter" class="com.dnm.core.service.domain.adapter.impl.AccountTransLogAdapterImpl"/>
+	
+	<!--cache -->
+	<bean id="requestOrderCache" class="com.dnm.core.cache.impl.RequestOrderCacheImpl"  init-method="init"/>
+	
+	
+	<!--normal sevice -->
+	<bean id="sequenceService" class="com.dnm.core.service.impl.SequenceServiceImpl"/>
+	<bean id="beanFactoryService" class="com.dnm.core.service.impl.BeanFactoryServiceImpl"/>
+	<bean id="accountService" class="com.dnm.core.service.impl.AccountServiceImpl"/>
+</beans>

@@ -1,0 +1,31 @@
+<!-- ===================================================================== -->
+<!-- Table configuration file for auto-generation of iwallet dal. -->
+<!-- $Id: itc_base.xml,v 1.00 2012/11/21 17:30:21 Toby Exp $ -->
+<!-- ===================================================================== -->
+
+<table sqlname="DNM_ACCOUNT_TRANS_LOG" dummypk="ID">
+
+	<column name="trans_amt" javatype="java.math.BigDecimal"/>
+
+	<operation name="insert">
+		<sql>
+			<![CDATA[
+					insert into dnm_account_trans_log
+					  (id, user_id, guid, biz_id, trans_type, trans_sub_type, trans_amt, trans_currency, trans_time, debit_account, credit_account, memo, gmt_create,gmt_modified)
+					values
+					  (?, ?, ?, ?, ?, ? , ?, ?, ? ,?, ?, ?, ?, ?)
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="load">
+		<sql>
+			<![CDATA[
+					select id, user_id, guid, biz_id, trans_type, trans_sub_type, trans_amt, trans_currency, trans_time, debit_account, credit_account, memo, gmt_create,gmt_modified
+					from dnm_account_trans_log
+					where id = ?
+        	]]>
+		</sql>
+	</operation>
+	
+</table>

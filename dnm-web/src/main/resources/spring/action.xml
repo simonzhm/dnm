@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+ xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- action -->
+	<bean id="registerAction" class="com.dnm.web.action.RegisterAction" scope="prototype"/>
+	<bean id="loginAction" class="com.dnm.web.action.LoginAction" scope="prototype"/>
+	<bean id="openAccountAction" class="com.dnm.web.action.OpenAccountAction" scope="prototype"/>
+	<bean id="queryAccountAction" class="com.dnm.web.action.QueryAccountAction" scope="prototype"/>
+	<bean id="addBankAction" class="com.dnm.web.action.AddBankAction" scope="prototype"/>
+	<bean id="addPlatformAction" class="com.dnm.web.action.AddPlatformAction" scope="prototype"/>
+	<bean id="addPlatformUsersAction" class="com.dnm.web.action.AddPlatformUsersAction" scope="prototype"/>
+	<bean id="accountTransferAction" class="com.dnm.web.action.AccountTransferAction" scope="prototype"/>
+	<bean id="investAction" class="com.dnm.web.action.InvestAction" scope="prototype"/>
+
+</beans>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">  
+
+<!-- Log4j配置文件。 -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- ===================================================================== -->
+	<!-- Appenders -->
+	<!-- ===================================================================== -->
+	
+	<!-- [公共Appender] 默认 -->	
+	<appender name="CONSOLE-APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out"/>  
+    	<param name="Threshold" value="debug"/>  
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="DEFAULT-APPENDER"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/dnm/common-default.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+
+	<!-- [公共Appender] 汇总错误 -->
+	<appender name="ERROR-APPENDER"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/dnm/common-error.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<param name="threshold" value="error" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+
+	<!-- [应用Appender] -->
+	<appender name="ACTION-DIGEST-APPENDER"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file"
+			value="logs/dnm/action-digest.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="DAL-DIGEST-APPENDER"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file"
+			value="logs/dnm/dal-digest.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="ACTION-APPENDER"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file"
+			value="logs/dnm/action.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="CACHE-APPENDER"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file"
+			value="logs/dnm/cache.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="CORE-APPENDER"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file"
+			value="logs/dnm/core.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %m%n" />
+		</layout>
+	</appender>
+
+	<!-- ===================================================================== -->
+	<!-- Loggers -->
+	<!-- ===================================================================== -->
+
+	
+	<!-- [应用Logger] -->
+	<logger name="ACTION-DIGEST-LOGGER" additivity="false">
+		<level value="info" />
+		<!-- appender-ref ref="ACTION-DIGEST-APPENDER" /-->
+		<appender-ref ref="CONSOLE-APPENDER" />
+	</logger>
+	
+	<logger name="DAL-DIGEST-LOGGER" additivity="false">
+		<level value="info" />
+		<!-- appender-ref ref="DAL-DIGEST-APPENDER" /-->
+		<appender-ref ref="CONSOLE-APPENDER" />
+	</logger>
+	
+	<logger name="com.dnm.web.action" additivity="false">
+		<level value="debug" />
+		<!-- appender-ref ref="ACTION-APPENDER" /-->
+		<appender-ref ref="CONSOLE-APPENDER" />
+	</logger>
+	
+	<logger name="com.dnm.core.cache" additivity="false">
+		<level value="info" />
+		<!-- appender-ref ref="CACHE-APPENDER" /-->
+		<appender-ref ref="CONSOLE-APPENDER" />
+	</logger>
+	
+	<logger name="com.dnm.core" additivity="false">
+		<level value="info" />
+		<!-- appender-ref ref="CORE-APPENDER" /-->
+		<appender-ref ref="CONSOLE-APPENDER" />
+	</logger>
+	
+
+	<!-- ===================================================================== -->
+	<!-- Root logger -->
+	<!-- ===================================================================== -->
+
+	<root>
+		<level value="debug" />
+		<!-- appender-ref ref="DEFAULT-APPENDER" / -->
+		<appender-ref ref="CONSOLE-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+	</root>
+
+</log4j:configuration>
+

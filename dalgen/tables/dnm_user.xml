@@ -1,0 +1,38 @@
+<!-- ===================================================================== -->
+<!-- Table configuration file for auto-generation of iwallet dal. -->
+<!-- $Id: itc_base.xml,v 1.00 2012/11/21 17:30:21 Toby Exp $ -->
+<!-- ===================================================================== -->
+
+<table sqlname="DNM_USER" dummypk="ID">
+
+	<operation name="insert">
+		<sql>
+			<![CDATA[
+					insert into dnm_user
+					  (id, username, password, email, gmt_create,gmt_modified)
+					values
+					  (?, ?, ?, ? , ?, ?)
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="load">
+		<sql>
+			<![CDATA[
+					select id, username, password, email, gmt_create,gmt_modified
+					from dnm_user
+					where id = ?
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="loadByUsernameAndPwd">
+		<sql>
+			<![CDATA[
+					select id, username, password, email, gmt_create,gmt_modified
+					from dnm_user
+					where username = ? and password = ?
+        	]]>
+		</sql>
+	</operation>
+</table>

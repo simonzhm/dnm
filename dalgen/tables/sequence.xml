@@ -1,0 +1,138 @@
+<!-- ===================================================================== -->
+<!-- Table configuration file for auto-generation of iwallet dal. -->
+<!-- $Id: itc_base.xml,v 1.00 2012/11/21 17:30:21 Toby Exp $ -->
+<!-- ===================================================================== -->
+
+<table sqlname="SEQUENCE" dummypk="NAME">
+
+	<operation name="getDnmUserNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_user_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmAccountNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_account_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmBankNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_bank_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmPlatformNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_platform_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmPlatformUserNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_platform_user_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmAccountTransLogNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_account_trans_log_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmAccountLogNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_account_log_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmInvestPriceCostNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_invest_price_cost_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmInvestRcdNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_invest_rcd_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="getDnmInvestDueinRcdNextval">
+		<sql>
+			<![CDATA[
+					select count(*) from sequence
+      ]]>
+		</sql>
+		<sqlmap>
+		 <![CDATA[
+		   		select NEXTVAL('dnm_invest_duein_rcd_seq') seqvalue
+		  ]]>
+		</sqlmap>
+	</operation>
+	
+</table>

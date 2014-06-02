@@ -1,0 +1,58 @@
+<!-- ===================================================================== -->
+<!-- Table configuration file for auto-generation of iwallet dal. -->
+<!-- $Id: itc_base.xml,v 1.00 2012/11/21 17:30:21 Toby Exp $ -->
+<!-- ===================================================================== -->
+
+<table sqlname="DNM_ACCOUNT" dummypk="ACCOUNT_ID">
+
+<column name="balance" javatype="java.math.BigDecimal"/>
+
+	<operation name="insert">
+		<sql>
+			<![CDATA[
+					insert into dnm_account
+					  (user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create,gmt_modified)
+					values
+					  (?, ?, ?, ?, ? , ?, ?, ? ,?, ?)
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="update" paramtype="object">
+		<sql>
+			<![CDATA[
+					update dnm_account set 
+					  user_id = ? ,account_name = ?, account_type = ?, sub_account_type = ?, balance = ? , currency = ?, direction = ?, gmt_create = ?, gmt_modified = ?
+					where account_id = ?  
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="load">
+		<sql>
+			<![CDATA[
+					select user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create,gmt_modified
+					from dnm_account
+					where account_id = ?
+        	]]>
+		</sql>
+	</operation>
+	
+	<operation name="active">
+		<sql>
+			<![CDATA[
+					select user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create,gmt_modified
+					from dnm_account
+					where account_id = ?
+        	]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+					select user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create,gmt_modified
+					from dnm_account
+					where account_id = #accountId# for update
+        	]]>
+		</sqlmap>
+	</operation>
+	
+</table>
