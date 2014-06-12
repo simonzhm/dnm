@@ -20,11 +20,11 @@ public class SplitProcessorFactory {
     /**
      * 获取拆标处理器
      * 
-     * @param name
+     * @param repayMethod 还款方式
      * @return
      */
-    public SplitProcessor getProcessor(String name) {
-        return processors.get(name);
+    public SplitProcessor getProcessor(String repayMethod) {
+        return processors.get(repayMethod);
     }
 
     /**

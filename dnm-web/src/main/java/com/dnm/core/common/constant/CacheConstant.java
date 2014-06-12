@@ -12,5 +12,8 @@ package com.dnm.core.common.constant;
 public interface CacheConstant {
 
     /** action缓存类 */
-    public static final String ACTION_CACHE = "ACTION_CACHE";
+    public static final String ACTION_CACHE             = "ACTION_CACHE";
+
+    /** 业务层与账务层子交易码映射缓存 */
+    public static final String SUB_TRANS_CODE_MAP_CACHE = "SUB_TRANS_CODE_MAP_CACHE";
 }

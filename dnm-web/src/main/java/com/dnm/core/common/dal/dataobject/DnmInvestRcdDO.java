@@ -65,6 +65,11 @@ public class DnmInvestRcdDO {
 	private String investDate;
 
 	/**
+	 * This property corresponds to db column <tt>interest_rate_type</tt>.
+	 */
+	private String interestRateType;
+
+	/**
 	 * This property corresponds to db column <tt>interest_rate</tt>.
 	 */
 	private BigDecimal interestRate;
@@ -235,6 +240,24 @@ public class DnmInvestRcdDO {
      */
 	public void setInvestDate(String investDate) {
 		this.investDate = investDate;
+	}
+
+    /**
+     * Getter method for property <tt>interestRateType</tt>.
+     *
+     * @return property value of interestRateType
+     */
+	public String getInterestRateType() {
+		return interestRateType;
+	}
+	
+	/**
+	 * Setter method for property <tt>interestRateType</tt>.
+	 * 
+	 * @param interestRateType value to be assigned to property interestRateType
+     */
+	public void setInterestRateType(String interestRateType) {
+		this.interestRateType = interestRateType;
 	}
 
     /**

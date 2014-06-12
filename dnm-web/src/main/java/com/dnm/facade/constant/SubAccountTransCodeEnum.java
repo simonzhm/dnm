@@ -39,6 +39,9 @@ public enum SubAccountTransCodeEnum {
     /** 会员费用 */
     VIP_FEE(AccountTransCodeEnum.COST.getCode() + "0002", "会员费用"),
 
+    /** 充值费用 */
+    DEPOSIT_FEE(AccountTransCodeEnum.COST.getCode() + "0003", "充值费用"),
+
     /** 线下充值奖励发放 */
     OFFLINE_PRICE(AccountTransCodeEnum.INCOME.getCode() + "0001", "线下充值奖"),
 

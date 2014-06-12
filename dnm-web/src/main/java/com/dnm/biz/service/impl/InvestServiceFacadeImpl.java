@@ -28,7 +28,7 @@ public class InvestServiceFacadeImpl extends BizServiceTemplate implements Inves
 
     /** 投标领域模型服务 */
     @Resource
-    private InvestDomainService InvestDomainService;
+    private InvestDomainService investDomainService;
 
     /** 
      * @see com.dnm.facade.api.InvestServiceFacade#invest(com.dnm.facade.request.InvestRequest)
@@ -47,7 +47,7 @@ public class InvestServiceFacadeImpl extends BizServiceTemplate implements Inves
                 InvestRecordModel model = investRecordFactory.compose(pamateter);
 
                 //领域服务处理
-                InvestDomainService.invest(model);
+                investDomainService.invest(model);
 
                 return model;
             }

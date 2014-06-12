@@ -4,6 +4,9 @@
  */
 package com.dnm.core.service.domain.impl;
 
+import javax.annotation.Resource;
+
+import com.dnm.core.processor.split.SplitProcessorFactory;
 import com.dnm.core.service.domain.AbstractDomainService;
 import com.dnm.core.service.domain.InvestDomainService;
 import com.dnm.core.service.domain.model.bill.InvestRecordModel;
@@ -16,21 +19,25 @@ import com.dnm.core.service.domain.model.bill.InvestRecordModel;
  */
 public class InvestDomainServiceImpl extends AbstractDomainService implements InvestDomainService {
 
+    /** 拆标工厂 */
+    @Resource
+    protected SplitProcessorFactory splitProcessorFactory;
+
     /** 
      * @see com.dnm.core.service.domain.InvestDomainService#invest(com.dnm.core.service.domain.model.bill.InvestRecordModel)
      */
     @Override
     public void invest(InvestRecordModel model) {
-        //明细标
-        splitDueinRcd(model);
+        //拆标并记账
+        split(model);
     }
 
     /**
-     * 按投资方式拆分明细标
+     * 拆标并记账
      * 
      * @param model
      */
-    private void splitDueinRcd(InvestRecordModel model) {
-
+    private void split(InvestRecordModel model) {
+        splitProcessorFactory.getProcessor(model.getRepayMethod()).split(model);
     }
 }

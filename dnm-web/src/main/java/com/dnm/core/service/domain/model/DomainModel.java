@@ -16,11 +16,14 @@ import com.dnm.core.common.util.AssertUtil;
  */
 public abstract class DomainModel {
 
+    /** 流程ID，定义了一组数据库操作流程 */
+    protected String flowId;
+
     /** 创建时间 */
-    protected Date gmtCreate;
+    protected Date   gmtCreate;
 
     /** 修改时间 */
-    protected Date gmtModified;
+    protected Date   gmtModified;
 
     /**
      * 模型一致性检查。
@@ -50,6 +53,24 @@ public abstract class DomainModel {
      */
     protected void amountBalanceCheck() {
 
+    }
+
+    /**
+     * Getter method for property <tt>flowId</tt>.
+     * 
+     * @return property value of flowId
+     */
+    public String getFlowId() {
+        return flowId;
+    }
+
+    /**
+     * Setter method for property <tt>flowId</tt>.
+     * 
+     * @param flowId value to be assigned to property flowId
+     */
+    public void setFlowId(String flowId) {
+        this.flowId = flowId;
     }
 
     /**

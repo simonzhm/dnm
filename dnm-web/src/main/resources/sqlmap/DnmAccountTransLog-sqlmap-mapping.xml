@@ -29,8 +29,8 @@
 	      		<result property="userId" column="user_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="guid" column="guid" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="bizId" column="biz_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
-	      		<result property="transType" column="trans_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
-	      		<result property="transSubType" column="trans_sub_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	      		<result property="transCode" column="trans_code" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	      		<result property="transSubCode" column="trans_sub_code" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="transAmt" column="trans_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
 	      		<result property="transCurrency" column="trans_currency" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="transTime" column="trans_time" javaType="java.util.Date" jdbcType="DATETIME"/>
@@ -48,14 +48,14 @@
     <!-- mapped statement for IbatisDnmAccountTransLogDAO.insert -->
     <insert id="MS-DNM-ACCOUNT-TRANS-LOG-INSERT">
     <![CDATA[
-        insert /*MS-DNM-DNM-ACCOUNT-TRANS-LOG-INSERT*/ into dnm_account_trans_log(id,user_id,guid,biz_id,trans_type,trans_sub_type,trans_amt,trans_currency,trans_time,debit_account,credit_account,memo,gmt_create,gmt_modified) values (#id#, #userId#, #guid#, #bizId#, #transType#, #transSubType#, #transAmt#, #transCurrency#, #transTime#, #debitAccount#, #creditAccount#, #memo#, #gmtCreate#, #gmtModified#)
+        insert /*MS-DNM-DNM-ACCOUNT-TRANS-LOG-INSERT*/ into dnm_account_trans_log(id,user_id,guid,biz_id,trans_code,trans_sub_code,trans_amt,trans_currency,trans_time,debit_account,credit_account,memo,gmt_create,gmt_modified) values (#id#, #userId#, #guid#, #bizId#, #transCode#, #transSubCode#, #transAmt#, #transCurrency#, #transTime#, #debitAccount#, #creditAccount#, #memo#, #gmtCreate#, #gmtModified#)
     ]]>
     </insert>
 
     <!-- mapped statement for IbatisDnmAccountTransLogDAO.load -->
     <select id="MS-DNM-ACCOUNT-TRANS-LOG-LOAD" resultMap="RM-DNM-ACCOUNT-TRANS-LOG" >
     <![CDATA[
-        select /*MS-DNM-DNM-ACCOUNT-TRANS-LOG-LOAD*/ id, user_id, guid, biz_id, trans_type, trans_sub_type, trans_amt, trans_currency, trans_time, debit_account, credit_account, memo, gmt_create, gmt_modified from dnm_account_trans_log where (id = #value#)
+        select /*MS-DNM-DNM-ACCOUNT-TRANS-LOG-LOAD*/ id, user_id, guid, biz_id, trans_code, trans_sub_code, trans_amt, trans_currency, trans_time, debit_account, credit_account, memo, gmt_create, gmt_modified from dnm_account_trans_log where (id = #value#)
     ]]>
     </select>
 

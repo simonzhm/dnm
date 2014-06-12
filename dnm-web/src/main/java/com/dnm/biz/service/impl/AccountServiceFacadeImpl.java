@@ -13,6 +13,7 @@ import com.dnm.core.service.domain.factory.AccountFactory;
 import com.dnm.core.service.domain.model.bill.AccountModel;
 import com.dnm.facade.api.AccountServiceFacade;
 import com.dnm.facade.request.OpenAccountRequest;
+import com.dnm.facade.request.QueryAccountByUserIdTypeRequest;
 import com.dnm.facade.request.QueryAccountRequest;
 import com.dnm.facade.result.AccountResult;
 
@@ -114,4 +115,45 @@ public class AccountServiceFacadeImpl extends BizServiceTemplate implements Acco
 
         });
     }
+
+    /** 
+     * @see com.dnm.facade.api.AccountServiceFacade#queryAccountByUserIdType(com.dnm.facade.request.QueryAccountByUserIdTypeRequest)
+     */
+    @Override
+    public AccountResult queryAccountByUserIdType(QueryAccountByUserIdTypeRequest requestData) {
+        return execute(new BizServiceCallBack<QueryAccountByUserIdTypeRequest, AccountModel, AccountResult>(
+            requestData, null) {
+
+            /** 
+             * @see com.dnm.biz.service.impl.BizServiceCallBack#doCallBack(java.lang.Object)
+             */
+            @Override
+            protected AccountModel doCallBack(QueryAccountByUserIdTypeRequest pamateter) {
+                //组装模型
+                AccountModel model = accountFactory.compose(pamateter);
+
+                //领域服务调用
+                accountDomainService.queryAccountByUserIdType(model);
+
+                return model;
+            }
+
+            /** 
+             * @see com.dnm.biz.service.impl.BizServiceCallBack#composeResult(java.lang.Object, java.lang.Exception)
+             */
+            @Override
+            protected AccountResult composeResult(AccountModel model, Exception e) {
+                AccountResult result = new AccountResult();
+                if (e == null) {
+                    ResultHelper.fillSuccessResult(result);
+                    result.setAccount(AccountHelper.convert2VO(model));
+                } else {
+                    ResultHelper.fillFailResult(result, e);
+                }
+                return result;
+            }
+
+        });
+    }
+
 }

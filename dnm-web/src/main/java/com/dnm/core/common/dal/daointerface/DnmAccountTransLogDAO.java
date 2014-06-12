@@ -32,7 +32,7 @@ public interface DnmAccountTransLogDAO {
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>insert into dnm_account_trans_log(id,user_id,guid,biz_id,trans_type,trans_sub_type,trans_amt,trans_currency,trans_time,debit_account,credit_account,memo,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
+	 *  <tt>insert into dnm_account_trans_log(id,user_id,guid,biz_id,trans_code,trans_sub_code,trans_amt,trans_currency,trans_time,debit_account,credit_account,memo,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
 	 *
 	 *	@param dnmAccountTransLog
 	 *	@return String
@@ -48,7 +48,7 @@ public interface DnmAccountTransLogDAO {
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>select id, user_id, guid, biz_id, trans_type, trans_sub_type, trans_amt, trans_currency, trans_time, debit_account, credit_account, memo, gmt_create, gmt_modified from dnm_account_trans_log where (id = ?)</tt>
+	 *  <tt>select id, user_id, guid, biz_id, trans_code, trans_sub_code, trans_amt, trans_currency, trans_time, debit_account, credit_account, memo, gmt_create, gmt_modified from dnm_account_trans_log where (id = ?)</tt>
 	 *
 	 *	@param id
 	 *	@return DnmAccountTransLogDO

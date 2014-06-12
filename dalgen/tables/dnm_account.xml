@@ -38,6 +38,16 @@
 		</sql>
 	</operation>
 	
+	<operation name="loadByUserIdType">
+		<sql>
+			<![CDATA[
+					select user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create,gmt_modified
+					from dnm_account
+					where user_id = ? and sub_account_type = ?
+        	]]>
+		</sql>
+	</operation>
+	
 	<operation name="active">
 		<sql>
 			<![CDATA[

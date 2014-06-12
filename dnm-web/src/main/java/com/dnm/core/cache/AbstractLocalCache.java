@@ -29,7 +29,7 @@ public abstract class AbstractLocalCache implements DnmCache {
     @Override
     public void init() throws Exception {
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("execute " + ReflectionUtil.getSimpleName(this));
+            LOGGER.debug("execute " + this.getName());
         }
         doInit();
     }

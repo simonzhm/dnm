@@ -89,6 +89,8 @@ public class InvestRecordFactoryImpl extends AbstractDomainService implements In
             fromAccountModels.add(composeInvestFromAccountModel(model, fromAccont));
         }
         model.setInvstFromAccountModels(fromAccountModels);
+        model.setGmtCreate(date);
+        model.setGmtModified(date);
 
         return model;
     }
@@ -109,9 +111,9 @@ public class InvestRecordFactoryImpl extends AbstractDomainService implements In
         priceCostModel
             .setId(DBKeyUtil.complete16(date, sequenceService.getDnmInvestPriceCostSeq()));
         priceCostModel.setGuid(model.getId());
-        priceCostModel.setBizId(null);
-        priceCostModel.setTransType(StringUtil.substring(priceCostRequestData.getType(), 0, 2));
-        priceCostModel.setTransSubType(priceCostRequestData.getType());
+        priceCostModel.setBizId(model.getId());
+        priceCostModel.setTransCode(StringUtil.substring(priceCostRequestData.getType(), 0, 2));
+        priceCostModel.setTransSubCode(priceCostRequestData.getType());
         priceCostModel.setOrigTransAmt(new BigDecimal(priceCostRequestData.getOrigAmt()));
         priceCostModel.setTransCurrency(CurrencyEnum.CNY.getCode());
         priceCostModel

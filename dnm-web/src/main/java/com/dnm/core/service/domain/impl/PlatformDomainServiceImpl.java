@@ -18,7 +18,7 @@ import com.dnm.core.service.domain.model.bill.PlatformUserModel;
 import com.dnm.core.service.domain.repository.PlatformRepository;
 import com.dnm.facade.api.AccountServiceFacade;
 import com.dnm.facade.constant.CurrencyEnum;
-import com.dnm.facade.constant.SubAccountTypeEnum;
+import com.dnm.facade.constant.ThirdAccountTypeEnum;
 import com.dnm.facade.request.OpenAccountRequest;
 import com.dnm.facade.result.AccountResult;
 
@@ -71,8 +71,8 @@ public class PlatformDomainServiceImpl extends AbstractDomainService implements
     private void openAccount(PlatformModel model) {
         List<PlatformUserModel> puModels = model.getNewPlatformUserModels();
         for (PlatformUserModel puModel : puModels) {
-            List<SubAccountTypeEnum> types = SubAccountTypeEnum.getPlatformSubAccountTypes();
-            for (SubAccountTypeEnum type : types) {
+            List<ThirdAccountTypeEnum> types = ThirdAccountTypeEnum.getPlatformSubAccountTypes();
+            for (ThirdAccountTypeEnum type : types) {
                 AccountResult result = null;
                 OpenAccountRequest requestData = new OpenAccountRequest();
                 requestData.setUserId(puModel.getUserId());

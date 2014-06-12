@@ -6,6 +6,7 @@ package com.dnm.core.service.domain.factory;
 
 import com.dnm.core.service.domain.model.bill.AccountModel;
 import com.dnm.facade.request.OpenAccountRequest;
+import com.dnm.facade.request.QueryAccountByUserIdTypeRequest;
 import com.dnm.facade.request.QueryAccountRequest;
 
 /**
@@ -31,4 +32,12 @@ public interface AccountFactory {
      * @return
      */
     public AccountModel compose(QueryAccountRequest requestData);
+
+    /**
+     * 组装账户领域模型
+     * 
+     * @param requestData
+     * @return
+     */
+    public AccountModel compose(QueryAccountByUserIdTypeRequest requestData);
 }

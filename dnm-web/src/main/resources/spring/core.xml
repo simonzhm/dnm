@@ -86,10 +86,25 @@
 	
 	<!--cache -->
 	<bean id="requestOrderCache" class="com.dnm.core.cache.impl.RequestOrderCacheImpl"  init-method="init"/>
+	<bean id="subTransCodeMapCache" class="com.dnm.core.cache.impl.SubTransCodeMapCacheImpl"  init-method="init"/>
 	
 	
 	<!--normal sevice -->
 	<bean id="sequenceService" class="com.dnm.core.service.impl.SequenceServiceImpl"/>
 	<bean id="beanFactoryService" class="com.dnm.core.service.impl.BeanFactoryServiceImpl"/>
 	<bean id="accountService" class="com.dnm.core.service.impl.AccountServiceImpl"/>
+	
+	<!--split processor -->
+	<bean id="splitProcessorFactory" class="com.dnm.core.processor.split.SplitProcessorFactory">
+		<property name="processors">
+			<map>
+				<!--按月付息，到期还本 -->
+				<entry key="D">
+					<ref bean="monthInterestSplitProcessor"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="monthInterestSplitProcessor" class="com.dnm.core.processor.split.impl.MonthInterestSplitProcessor"/>
+	
 </beans>

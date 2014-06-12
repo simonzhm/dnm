@@ -30,11 +30,9 @@
 	      		<result property="periodIndex" column="period_index" javaType="int" jdbcType="TINYINT" nullValue="0"/>
 	      		<result property="repayAmt" column="repay_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
 	      		<result property="repayInterestAmt" column="repay_interest_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
-	      		<result property="feeRate" column="fee_rate" javaType="long" jdbcType="DECIMAL" nullValue="0"/>
 	      		<result property="repayDate" column="repay_date" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="actualRepayDate" column="actual_repay_date" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="isDelay" column="is_delay" javaType="java.lang.String" jdbcType="CHAR"/>
-	      		<result property="delayRate" column="delay_rate" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="isFinish" column="is_finish" javaType="java.lang.String" jdbcType="CHAR"/>
 	      		<result property="gmtCreate" column="gmt_create" javaType="java.util.Date" jdbcType="DATETIME"/>
 	      		<result property="gmtModified" column="gmt_modified" javaType="java.util.Date" jdbcType="TIMESTAMP"/>

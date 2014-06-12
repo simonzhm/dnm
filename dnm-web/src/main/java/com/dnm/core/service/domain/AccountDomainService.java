@@ -27,4 +27,12 @@ public interface AccountDomainService {
      * @param model
      */
     public void queryAccount(AccountModel model);
+
+    /**
+     * 根据用户ID和子账户类型查找账户
+     * 
+     * @param model
+     */
+    public void queryAccountByUserIdType(AccountModel model);
+
 }

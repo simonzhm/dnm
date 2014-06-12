@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 子交易类型
+ * 业务层子交易类型
  * 
  * @author hongmin.zhonghm
  * @version $Id: SubTransCodeEnum.java, v 0.1 2014-5-13 下午2:07:55 hongmin.zhonghm Exp $
@@ -20,6 +20,15 @@ public enum SubTransCodeEnum {
 
     /** 普通回款 */
     NORMAL_CASHBACK(TransCodeEnum.CASHBACK.getCode() + "0001", "普通回款"),
+
+    /** 投标奖 */
+    INVEST_PRICE(TransCodeEnum.PRICE.getCode() + "0001", "投标奖"),
+
+    /** 续投奖 */
+    RE_INVEST_PRICE(TransCodeEnum.PRICE.getCode() + "0002", "续投奖"),
+
+    /** 充值费用 */
+    DEPOSIT_FEE(TransCodeEnum.COST.getCode() + "0001", "充值费用"),
 
     /** 线上充值 */
     ONLINE_DEPOSIT(TransCodeEnum.DEPOSIT.getCode() + "0001", "线上充值"),

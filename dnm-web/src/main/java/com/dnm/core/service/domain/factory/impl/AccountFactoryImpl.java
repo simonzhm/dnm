@@ -15,6 +15,7 @@ import com.dnm.core.service.domain.factory.AccountFactory;
 import com.dnm.core.service.domain.model.bill.AccountModel;
 import com.dnm.facade.constant.CurrencyEnum;
 import com.dnm.facade.request.OpenAccountRequest;
+import com.dnm.facade.request.QueryAccountByUserIdTypeRequest;
 import com.dnm.facade.request.QueryAccountRequest;
 
 /**
@@ -55,6 +56,17 @@ public class AccountFactoryImpl extends AbstractDomainService implements Account
     public AccountModel compose(QueryAccountRequest requestData) {
         AccountModel model = new AccountModel();
         model.setAccountId(requestData.getAccountId());
+        return model;
+    }
+
+    /** 
+     * @see com.dnm.core.service.domain.factory.AccountFactory#compose(com.dnm.facade.request.QueryAccountByUserIdTypeRequest)
+     */
+    @Override
+    public AccountModel compose(QueryAccountByUserIdTypeRequest requestData) {
+        AccountModel model = new AccountModel();
+        model.setUserId(requestData.getUserId());
+        model.setSubAccountType(requestData.getSubAccountType());
         return model;
     }
 

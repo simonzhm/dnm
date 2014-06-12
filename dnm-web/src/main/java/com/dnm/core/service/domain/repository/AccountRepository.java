@@ -22,11 +22,18 @@ public interface AccountRepository {
     public void store(AccountModel model);
 
     /**
-     * 加载并填充模型
+     * 主键加载并填充模型
      * 
      * @param model
      */
     public void fill(AccountModel model);
+
+    /**
+     * 非主键加载并填充模型
+     * 
+     * @param model
+     */
+    public void reFill(AccountModel model);
 
     /**
      * 加载并填充模型（加锁）

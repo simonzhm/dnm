@@ -22,7 +22,7 @@ public class CalculateUtil {
      * @return
      */
     public static BigDecimal calcAmt(String origAmt, String rate, String actualAmt) {
-        return calcAmt(new BigDecimal(origAmt), getRateNonPercent(rate), new BigDecimal(actualAmt));
+        return calcAmt(getBigDecimal(origAmt), getRateNonPercent(rate), getBigDecimal(actualAmt));
     }
 
     /**
@@ -73,6 +73,20 @@ public class CalculateUtil {
      */
     public static BigDecimal getRateNonPercent(String origRate) {
         return new BigDecimal(origRate).divide(new BigDecimal("100"), 4, BigDecimal.ROUND_HALF_UP);
+    }
+
+    /**
+     * ½«×Ö·û´®×ª»»ÎªBigDecimal
+     * 
+     * @param number
+     * @return
+     */
+    public static BigDecimal getBigDecimal(String number) {
+        if (StringUtil.isBlank(number)) {
+            return null;
+        } else {
+            return new BigDecimal(number);
+        }
     }
 
     public static void main(String[] args) {

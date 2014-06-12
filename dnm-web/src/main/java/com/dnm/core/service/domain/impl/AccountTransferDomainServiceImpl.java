@@ -82,9 +82,11 @@ public class AccountTransferDomainServiceImpl extends AbstractDomainService impl
         BigDecimal transAmt = model.getTransAmt();
         AccountModel debitAccountModel = model.getDebitAccountModel();
         AccountModel creditAccountModel = model.getCreditAccountModel();
-        debitAccountModel.setBalance(AmountUtil.add(debitAccountModel.getBalance(), transAmt));
-        creditAccountModel.setBalance(AmountUtil.substract(creditAccountModel.getBalance(),
-            transAmt));
+
+        debitAccountModel.setBalance(calcBalance(debitAccountModel, transAmt,
+            AccountDirectionEnum.DEBIT));
+        creditAccountModel.setBalance(calcBalance(creditAccountModel, transAmt,
+            AccountDirectionEnum.CREDIT));
 
         AccountLogModel debitAccountLogModel = genAccountLogModel(model, debitAccountModel,
             AccountDirectionEnum.DEBIT);
@@ -125,5 +127,22 @@ public class AccountTransferDomainServiceImpl extends AbstractDomainService impl
         model.setGmtModified(now);
 
         return model;
+    }
+
+    /**
+     * 根据账户方向累计金额
+     * 
+     * @param accountModel
+     * @param transAmt
+     * @param direction
+     * @return
+     */
+    private BigDecimal calcBalance(AccountModel accountModel, BigDecimal transAmt,
+                                   AccountDirectionEnum direction) {
+        if (StringUtil.equals(accountModel.getDirection(), direction.getCode())) {
+            return AmountUtil.add(accountModel.getBalance(), transAmt);
+        } else {
+            return AmountUtil.substract(accountModel.getBalance(), transAmt);
+        }
     }
 }

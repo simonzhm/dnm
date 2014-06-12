@@ -10,15 +10,28 @@ import java.util.Date;
 import org.apache.log4j.Logger;
 import org.apache.struts2.StrutsSpringTestCase;
 
+import com.dnm.biz.helper.AccountHelper;
 import com.dnm.core.common.dal.daointerface.DnmAccountDAO;
+import com.dnm.core.common.dal.daointerface.DnmBankDAO;
+import com.dnm.core.common.dal.daointerface.DnmPlatformDAO;
 import com.dnm.core.common.dal.daointerface.DnmUserDAO;
 import com.dnm.core.common.dal.dataobject.DnmAccountDO;
+import com.dnm.core.common.dal.dataobject.DnmBankDO;
+import com.dnm.core.common.dal.dataobject.DnmPlatformDO;
 import com.dnm.core.common.dal.dataobject.DnmUserDO;
 import com.dnm.core.common.util.MD5Util;
+import com.dnm.core.service.domain.convertor.AccountConvertor;
+import com.dnm.core.service.domain.model.bill.AccountModel;
+import com.dnm.facade.api.AccountServiceFacade;
+import com.dnm.facade.api.PlatformServiceFacade;
 import com.dnm.facade.constant.AccountDirectionEnum;
 import com.dnm.facade.constant.AccountTypeEnum;
 import com.dnm.facade.constant.CurrencyEnum;
-import com.dnm.facade.constant.SubAccountTypeEnum;
+import com.dnm.facade.constant.ThirdAccountTypeEnum;
+import com.dnm.facade.request.AddPlatformUsersRequest;
+import com.dnm.facade.request.PlatformUserRequest;
+import com.dnm.facade.request.QueryAccountByUserIdTypeRequest;
+import com.dnm.facade.result.AccountResult;
 
 /**
  * 测试基类
@@ -67,11 +80,13 @@ public class BaseActionTest extends StrutsSpringTestCase {
     }
 
     public static void beforeTestInit() {
+
+        Date now = new Date();
+
         //初始化用户
         DnmUserDAO dnmUserDAO = (DnmUserDAO) applicationContext.getBean("dnmUserDAO");
         DnmUserDO user = dnmUserDAO.load(USER_ID);
         if (user == null) {
-            Date now = new Date();
             user = new DnmUserDO();
             user.setId(USER_ID);
             user.setUsername(MD5Util.getCode(USER_NAME));
@@ -82,18 +97,33 @@ public class BaseActionTest extends StrutsSpringTestCase {
             dnmUserDAO.insert(user);
         }
 
-        //初始化账户
+        //初始化银行
+        DnmBankDAO dnmBankDAO = (DnmBankDAO) applicationContext.getBean("dnmBankDAO");
+        DnmBankDO bank = dnmBankDAO.load(USER_ID);
+        if (bank == null) {
+            bank = new DnmBankDO();
+            bank.setId(USER_ID);
+            bank.setBankId("CMC");
+            bank.setAccountId(SRC_ACCOUNT_ID);
+            bank.setBankName("招商银行深圳支行test");
+            bank.setDirection(AccountDirectionEnum.DEBIT.getCode());
+            bank.setUserId(USER_ID);
+            bank.setGmtCreate(now);
+            bank.setGmtModified(now);
+            dnmBankDAO.insert(bank);
+        }
+
+        //初始化银行卡账户
         DnmAccountDAO dnmAccountDAO = (DnmAccountDAO) applicationContext.getBean("dnmAccountDAO");
         DnmAccountDO account = dnmAccountDAO.load(SRC_ACCOUNT_ID);
         if (account == null) {
-            Date now = new Date();
             account = new DnmAccountDO();
             account.setUserId(USER_ID);
             account.setAccountId(SRC_ACCOUNT_ID);
             account.setAccountName("招商银行深圳支行test");
             account.setAccountType(AccountTypeEnum.BANK.getCode());
-            account.setSubAccountType(SubAccountTypeEnum.CREDIT_CARD.getCode());
-            account.setBalance(new BigDecimal("2000"));
+            account.setSubAccountType(ThirdAccountTypeEnum.CREDIT_CARD.getCode());
+            account.setBalance(new BigDecimal("2000000"));
             account.setCurrency(CurrencyEnum.CNY.getCode());
             account.setDirection(AccountDirectionEnum.DEBIT.getCode());
             account.setGmtCreate(now);
@@ -101,21 +131,46 @@ public class BaseActionTest extends StrutsSpringTestCase {
             dnmAccountDAO.insert(account);
         }
 
-        account = dnmAccountDAO.load(DEST_ACCOUNT_ID);
-        if (account == null) {
-            Date now = new Date();
-            account = new DnmAccountDO();
-            account.setUserId(USER_ID);
-            account.setAccountId(DEST_ACCOUNT_ID);
-            account.setAccountName("金豪利投资有限公司test");
-            account.setAccountType(AccountTypeEnum.PLATFORM.getCode());
-            account.setSubAccountType(SubAccountTypeEnum.PLATFORM_BALANCE.getCode());
-            account.setBalance(new BigDecimal("2000"));
-            account.setCurrency(CurrencyEnum.CNY.getCode());
-            account.setDirection(AccountDirectionEnum.DEBIT.getCode());
-            account.setGmtCreate(now);
-            account.setGmtModified(now);
-            dnmAccountDAO.insert(account);
+        //初始化平台
+        DnmPlatformDAO dnmPlatformDAO = (DnmPlatformDAO) applicationContext
+            .getBean("dnmPlatformDAO");
+        DnmPlatformDO platform = dnmPlatformDAO.load(USER_ID);
+        if (platform == null) {
+            platform = new DnmPlatformDO();
+            platform.setId(USER_ID);
+            platform.setName("金豪利投资有限公司");
+            platform.setDescription("携手金豪利");
+            platform.setUrl("http://www.jinhaoli.net");
+            platform.setGmtCreate(now);
+            platform.setGmtModified(now);
+            dnmPlatformDAO.insert(platform);
+
+            //初始化平台用户
+            PlatformServiceFacade platformServiceFacade = (PlatformServiceFacade) applicationContext
+                .getBean("platformServiceFacade");
+            AddPlatformUsersRequest addPlatformUsersRequest = new AddPlatformUsersRequest();
+            addPlatformUsersRequest.setUserId(USER_ID);
+            addPlatformUsersRequest.setPlatformId(USER_ID);
+            PlatformUserRequest platformUserRequest = new PlatformUserRequest();
+            platformUserRequest.setPlatformUserId("牛牛");
+            addPlatformUsersRequest.getPlatformUsers().add(platformUserRequest);
+
+            platformServiceFacade.addPlatformUsers(addPlatformUsersRequest);
         }
+
+        //查找可用余额
+        QueryAccountByUserIdTypeRequest queryAccountByUserIdTypeRequest = new QueryAccountByUserIdTypeRequest();
+        queryAccountByUserIdTypeRequest.setUserId(USER_ID);
+        queryAccountByUserIdTypeRequest.setSubAccountType("200101");
+        AccountServiceFacade accountServiceFacade = (AccountServiceFacade) applicationContext
+            .getBean("accountServiceFacade");
+        AccountResult result = accountServiceFacade
+            .queryAccountByUserIdType(queryAccountByUserIdTypeRequest);
+        AccountModel accountModel = AccountHelper.convert2Model(result.getAccount());
+        accountModel.setBalance(new BigDecimal("2000000"));
+        accountModel.setGmtCreate(now);
+        accountModel.setGmtModified(now);
+        dnmAccountDAO.update(AccountConvertor.convert2DO(accountModel));
+
     }
 }

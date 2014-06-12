@@ -32,6 +32,7 @@
 	      		<result property="repayMethod" column="repay_method" javaType="java.lang.String" jdbcType="CHAR"/>
 	      		<result property="investAmt" column="invest_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
 	      		<result property="investDate" column="invest_date" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	      		<result property="interestRateType" column="interest_rate_type" javaType="java.lang.String" jdbcType="CHAR"/>
 	      		<result property="interestRate" column="interest_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
 	      		<result property="interestAmt" column="interest_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
 	      		<result property="costAmt" column="cost_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>

@@ -79,6 +79,11 @@ public class DnmInvestPriceCostDO {
 	private String memo;
 
 	/**
+	 * This property corresponds to db column <tt>is_finish</tt>.
+	 */
+	private String isFinish;
+
+	/**
 	 * This property corresponds to db column <tt>gmt_create</tt>.
 	 */
 	private Date gmtCreate;
@@ -268,6 +273,24 @@ public class DnmInvestPriceCostDO {
      */
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+
+    /**
+     * Getter method for property <tt>isFinish</tt>.
+     *
+     * @return property value of isFinish
+     */
+	public String getIsFinish() {
+		return isFinish;
+	}
+	
+	/**
+	 * Setter method for property <tt>isFinish</tt>.
+	 * 
+	 * @param isFinish value to be assigned to property isFinish
+     */
+	public void setIsFinish(String isFinish) {
+		this.isFinish = isFinish;
 	}
 
     /**

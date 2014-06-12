@@ -57,7 +57,7 @@ public class InvestRequestChecker extends BaseRequestChecker {
             }
         }
 
-        //如果奖励列表不为空
+        //如果费用列表不为空
         List<InvestPriceCostRequest> costList = request.getInvestCostList();
         if (!CollectionUtils.isEmpty(costList)) {
             for (InvestPriceCostRequest cost : costList) {

@@ -34,6 +34,10 @@ public final class InvestPriceCostRequest extends BaseRequestOrder {
     @RequestFieldCheck(notEmpty = true)
     private String            actualAmt;
 
+    /** ÊÇ·ñÍê³É£¬Y/N */
+    @RequestFieldCheck(notEmpty = true, length = 1)
+    private String            isFinish;
+
     /**
      * Getter method for property <tt>type</tt>.
      * 
@@ -104,6 +108,24 @@ public final class InvestPriceCostRequest extends BaseRequestOrder {
      */
     public void setActualAmt(String actualAmt) {
         this.actualAmt = actualAmt;
+    }
+
+    /**
+     * Getter method for property <tt>isFinish</tt>.
+     * 
+     * @return property value of isFinish
+     */
+    public String getIsFinish() {
+        return isFinish;
+    }
+
+    /**
+     * Setter method for property <tt>isFinish</tt>.
+     * 
+     * @param isFinish value to be assigned to property isFinish
+     */
+    public void setIsFinish(String isFinish) {
+        this.isFinish = isFinish;
     }
 
 }

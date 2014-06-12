@@ -66,9 +66,9 @@ public class AccountModel extends DomainModel {
             "AccountModel.accountName is empty");
         AssertUtil.isTrue(StringUtil.isMeetLength(accountType, 2),
             ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL, "AccountModel.accountType is illegal");
-        AssertUtil.isTrue(StringUtil.isMeetLength(subAccountType, 4),
+        AssertUtil.isTrue(StringUtil.isMeetLength(subAccountType, 6),
             ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL, "AccountModel.subAccountType is illegal");
-        AssertUtil.isTrue(balance.compareTo(new BigDecimal(0)) >= 0,
+        AssertUtil.isTrue(AmountUtil.isGreaterOrEqualZero(balance),
             ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountModel.balance must greater than or equals 0");
         AssertUtil.notBlank(currency, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
@@ -92,9 +92,9 @@ public class AccountModel extends DomainModel {
     protected void amountBalanceCheck() {
         super.amountBalanceCheck();
         if (StringUtil.equals(direction, AccountDirectionEnum.DEBIT.getCode())) {
-            AssertUtil.isTrue(AmountUtil.isGreaterThanZero(balance),
+            AssertUtil.isTrue(AmountUtil.isGreaterOrEqualZero(balance),
                 ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
-                "amount of debit account must be greater than 0 [" + accountId + "]");
+                "amount of debit account must be greater or equals than 0 [" + accountId + "]");
         }
     }
 

@@ -55,11 +55,6 @@ public class DnmInvestDueinRcdDO {
 	private BigDecimal repayInterestAmt;
 
 	/**
-	 * This property corresponds to db column <tt>fee_rate</tt>.
-	 */
-	private long feeRate;
-
-	/**
 	 * This property corresponds to db column <tt>repay_date</tt>.
 	 */
 	private String repayDate;
@@ -73,11 +68,6 @@ public class DnmInvestDueinRcdDO {
 	 * This property corresponds to db column <tt>is_delay</tt>.
 	 */
 	private String isDelay;
-
-	/**
-	 * This property corresponds to db column <tt>delay_rate</tt>.
-	 */
-	private String delayRate;
 
 	/**
 	 * This property corresponds to db column <tt>is_finish</tt>.
@@ -187,24 +177,6 @@ public class DnmInvestDueinRcdDO {
 	}
 
     /**
-     * Getter method for property <tt>feeRate</tt>.
-     *
-     * @return property value of feeRate
-     */
-	public long getFeeRate() {
-		return feeRate;
-	}
-	
-	/**
-	 * Setter method for property <tt>feeRate</tt>.
-	 * 
-	 * @param feeRate value to be assigned to property feeRate
-     */
-	public void setFeeRate(long feeRate) {
-		this.feeRate = feeRate;
-	}
-
-    /**
      * Getter method for property <tt>repayDate</tt>.
      *
      * @return property value of repayDate
@@ -256,24 +228,6 @@ public class DnmInvestDueinRcdDO {
      */
 	public void setIsDelay(String isDelay) {
 		this.isDelay = isDelay;
-	}
-
-    /**
-     * Getter method for property <tt>delayRate</tt>.
-     *
-     * @return property value of delayRate
-     */
-	public String getDelayRate() {
-		return delayRate;
-	}
-	
-	/**
-	 * Setter method for property <tt>delayRate</tt>.
-	 * 
-	 * @param delayRate value to be assigned to property delayRate
-     */
-	public void setDelayRate(String delayRate) {
-		this.delayRate = delayRate;
 	}
 
     /**

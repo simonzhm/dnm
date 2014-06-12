@@ -35,6 +35,7 @@
 	      		<result property="transAmt" column="trans_amt" javaType="long" jdbcType="DECIMAL" nullValue="0"/>
 	      		<result property="transCurrency" column="trans_currency" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="memo" column="memo" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	      		<result property="isFinish" column="is_finish" javaType="java.lang.String" jdbcType="CHAR"/>
 	      		<result property="gmtCreate" column="gmt_create" javaType="java.util.Date" jdbcType="DATETIME"/>
 	      		<result property="gmtModified" column="gmt_modified" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
 	     </resultMap>

@@ -47,6 +47,18 @@ public class AccountRepositoryImpl extends AbstractDomainService implements Acco
     }
 
     /** 
+     * @see com.dnm.core.service.domain.repository.AccountRepository#reFill(com.dnm.core.service.domain.model.bill.AccountModel)
+     */
+    @Override
+    public void reFill(AccountModel model) {
+        //定义仓储行为
+        AccessorActionDef actionDef = defAction(AccessorEnum.ACCOUNT, RepoActionEnum.RELOAD);
+
+        //模型处理
+        accessModel(model, actionDef);
+    }
+
+    /** 
      * @see com.dnm.core.service.domain.repository.AccountRepository#active(com.dnm.core.service.domain.model.bill.AccountModel)
      */
     @Override

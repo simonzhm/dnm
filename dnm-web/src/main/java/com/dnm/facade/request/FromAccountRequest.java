@@ -4,6 +4,8 @@
  */
 package com.dnm.facade.request;
 
+import com.dnm.facade.constant.CurrencyEnum;
+
 /**
  * 资金来源请求单据
  * 
@@ -22,7 +24,7 @@ public class FromAccountRequest extends BaseRequestOrder {
     private String            amount;
 
     /** 币种 */
-    private String            currency;
+    private String            currency         = CurrencyEnum.CNY.getCode();
 
     /**
      * Getter method for property <tt>accountId</tt>.

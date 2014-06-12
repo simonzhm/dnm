@@ -20,7 +20,7 @@
 		<sql>
 			<![CDATA[
 					select id, user_id, bank_id, bank_name, direction, account_id, bill_date, repay_date, gmt_create,gmt_modified
-					from dnm_account
+					from dnm_bank
 					where id = ?
         	]]>
 		</sql>

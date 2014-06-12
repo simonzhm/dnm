@@ -44,6 +44,17 @@ public class AccountAccessor extends AbstractDataAccessor {
     }
 
     /** 
+     * @see com.dnm.core.service.domain.repository.access.AbstractDataAccessor#reFill(com.dnm.core.service.domain.model.DomainModel)
+     */
+    @Override
+    public void reFill(DomainModel model) {
+        AccountModel accountModel = (AccountModel) model;
+        DnmAccountDO accountDo = dnmAccountDAO.loadByUserIdType(accountModel.getUserId(),
+            accountModel.getSubAccountType());
+        convert2Model(accountModel, accountDo);
+    }
+
+    /** 
      * @see com.dnm.core.service.domain.repository.access.AbstractDataAccessor#lockFill(com.dnm.core.service.domain.model.DomainModel)
      */
     @Override

@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 
 import com.dnm.core.common.resultcode.ResultCodeEnum;
 import com.dnm.core.common.util.AssertUtil;
+import com.dnm.core.common.util.StringUtil;
 import com.dnm.core.service.domain.model.DomainModel;
 
 /**
@@ -28,10 +29,10 @@ public class InvestPriceCostModel extends DomainModel {
     private String     bizId;
 
     /** 交易类型 */
-    private String     transType;
+    private String     transCode;
 
     /** 子交易类型 */
-    private String     transSubType;
+    private String     transSubCode;
 
     /** 原始交易金额 */
     private BigDecimal origTransAmt;
@@ -45,6 +46,9 @@ public class InvestPriceCostModel extends DomainModel {
     /** 交易币种 */
     private String     transCurrency;
 
+    /** 是否完成 */
+    private String     isFinish;
+
     /** 备注 */
     private String     memo;
 
@@ -57,15 +61,17 @@ public class InvestPriceCostModel extends DomainModel {
             "AccountTransLogModel.id is empty");
         AssertUtil.notBlank(guid, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountTransLogModel.guid is empty");
-        AssertUtil.notBlank(transType, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
+        AssertUtil.notBlank(transCode, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountTransLogModel.transType is empty");
-        AssertUtil.notBlank(transSubType, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
+        AssertUtil.notBlank(transSubCode, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountTransLogModel.transSubType is empty");
         AssertUtil.isTrue(transAmt.compareTo(new BigDecimal(0)) > 0,
             ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountTransLogModel.transAmt must greater than 0");
         AssertUtil.notBlank(transCurrency, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountTransLogModel.currency is empty");
+        AssertUtil.isTrue(StringUtil.isMeetLength(isFinish, 1),
+            ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL, "AccountTransLogModel.isFinish is illegal");
     }
 
     /**
@@ -177,39 +183,39 @@ public class InvestPriceCostModel extends DomainModel {
     }
 
     /**
-     * Getter method for property <tt>transType</tt>.
+     * Getter method for property <tt>transCode</tt>.
      * 
-     * @return property value of transType
+     * @return property value of transCode
      */
-    public String getTransType() {
-        return transType;
+    public String getTransCode() {
+        return transCode;
     }
 
     /**
-     * Setter method for property <tt>transType</tt>.
+     * Setter method for property <tt>transCode</tt>.
      * 
-     * @param transType value to be assigned to property transType
+     * @param transCode value to be assigned to property transCode
      */
-    public void setTransType(String transType) {
-        this.transType = transType;
+    public void setTransCode(String transCode) {
+        this.transCode = transCode;
     }
 
     /**
-     * Getter method for property <tt>transSubType</tt>.
+     * Getter method for property <tt>transSubCode</tt>.
      * 
-     * @return property value of transSubType
+     * @return property value of transSubCode
      */
-    public String getTransSubType() {
-        return transSubType;
+    public String getTransSubCode() {
+        return transSubCode;
     }
 
     /**
-     * Setter method for property <tt>transSubType</tt>.
+     * Setter method for property <tt>transSubCode</tt>.
      * 
-     * @param transSubType value to be assigned to property transSubType
+     * @param transSubCode value to be assigned to property transSubCode
      */
-    public void setTransSubType(String transSubType) {
-        this.transSubType = transSubType;
+    public void setTransSubCode(String transSubCode) {
+        this.transSubCode = transSubCode;
     }
 
     /**
@@ -228,6 +234,24 @@ public class InvestPriceCostModel extends DomainModel {
      */
     public void setTransCurrency(String transCurrency) {
         this.transCurrency = transCurrency;
+    }
+
+    /**
+     * Getter method for property <tt>isFinish</tt>.
+     * 
+     * @return property value of isFinish
+     */
+    public String getIsFinish() {
+        return isFinish;
+    }
+
+    /**
+     * Setter method for property <tt>isFinish</tt>.
+     * 
+     * @param isFinish value to be assigned to property isFinish
+     */
+    public void setIsFinish(String isFinish) {
+        this.isFinish = isFinish;
     }
 
     /**

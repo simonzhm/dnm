@@ -62,6 +62,13 @@
     ]]>
     </select>
 
+    <!-- mapped statement for IbatisDnmAccountDAO.loadByUserIdType -->
+    <select id="MS-DNM-ACCOUNT-LOAD-BY-USER-ID-TYPE" resultMap="RM-DNM-ACCOUNT" >
+    <![CDATA[
+        select /*MS-DNM-DNM-ACCOUNT-LOAD-BY-USER-ID-TYPE*/ user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create, gmt_modified from dnm_account where ((user_id = #userId#) AND (sub_account_type = #subAccountType#))
+    ]]>
+    </select>
+
     <!-- mapped statement for IbatisDnmAccountDAO.active -->
     <select id="MS-DNM-ACCOUNT-ACTIVE" resultMap="RM-DNM-ACCOUNT" >
         select /*MS-DNM-DNM-ACCOUNT-ACTIVE*/ user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create,gmt_modified

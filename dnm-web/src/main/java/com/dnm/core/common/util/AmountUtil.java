@@ -35,6 +35,16 @@ public class AmountUtil {
     }
 
     /**
+     * 判断金额是否不等于0
+     * 
+     * @param amount
+     * @return
+     */
+    public static boolean isNotEqualZero(BigDecimal amount) {
+        return amount != null && amount.compareTo(new BigDecimal(0)) != 0;
+    }
+
+    /**
      * 金额加到原来的对象上，并返回新的对象
      * 
      * @param origAmt

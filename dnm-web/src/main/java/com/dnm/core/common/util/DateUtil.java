@@ -239,6 +239,30 @@ public class DateUtil {
     }
 
     /**
+     * 获取默订格式化的日期yyyy-MM-dd HH:mm:ss
+     * 
+     * @param date
+     * @param dateFormatStr
+     * @return
+     */
+    public static String getDefaultDateString(Date date) {
+        return getDateString(date, newFormat);
+    }
+
+    /**
+     * 获取格式化的日期
+     * 
+     * @param date
+     * @param dateFormatStr
+     * @return
+     */
+    public static String getDateString(Date date, String dateFormatStr) {
+        DateFormat dateFormat = getNewDateFormat(dateFormatStr);
+
+        return getDateString(date, dateFormat);
+    }
+
+    /**
      * 获取格式化的日期
      * 
      * @param date

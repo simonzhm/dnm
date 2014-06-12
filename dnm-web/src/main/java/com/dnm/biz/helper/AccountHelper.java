@@ -36,4 +36,16 @@ public class AccountHelper {
         //        vo.setCurrency(model.getCurrency());
         return vo;
     }
+
+    /**
+     * 转换业务层对象为账户模型
+     * 
+     * @param model
+     * @return
+     */
+    public static AccountModel convert2Model(AccountVO vo) {
+        AccountModel model = new AccountModel();
+        BeanUtils.copyProperties(vo, model);
+        return model;
+    }
 }

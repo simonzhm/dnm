@@ -50,14 +50,14 @@ public class DnmAccountTransLogDO {
 	private String bizId;
 
 	/**
-	 * This property corresponds to db column <tt>trans_type</tt>.
+	 * This property corresponds to db column <tt>trans_code</tt>.
 	 */
-	private String transType;
+	private String transCode;
 
 	/**
-	 * This property corresponds to db column <tt>trans_sub_type</tt>.
+	 * This property corresponds to db column <tt>trans_sub_code</tt>.
 	 */
-	private String transSubType;
+	private String transSubCode;
 
 	/**
 	 * This property corresponds to db column <tt>trans_amt</tt>.
@@ -174,39 +174,39 @@ public class DnmAccountTransLogDO {
 	}
 
     /**
-     * Getter method for property <tt>transType</tt>.
+     * Getter method for property <tt>transCode</tt>.
      *
-     * @return property value of transType
+     * @return property value of transCode
      */
-	public String getTransType() {
-		return transType;
+	public String getTransCode() {
+		return transCode;
 	}
 	
 	/**
-	 * Setter method for property <tt>transType</tt>.
+	 * Setter method for property <tt>transCode</tt>.
 	 * 
-	 * @param transType value to be assigned to property transType
+	 * @param transCode value to be assigned to property transCode
      */
-	public void setTransType(String transType) {
-		this.transType = transType;
+	public void setTransCode(String transCode) {
+		this.transCode = transCode;
 	}
 
     /**
-     * Getter method for property <tt>transSubType</tt>.
+     * Getter method for property <tt>transSubCode</tt>.
      *
-     * @return property value of transSubType
+     * @return property value of transSubCode
      */
-	public String getTransSubType() {
-		return transSubType;
+	public String getTransSubCode() {
+		return transSubCode;
 	}
 	
 	/**
-	 * Setter method for property <tt>transSubType</tt>.
+	 * Setter method for property <tt>transSubCode</tt>.
 	 * 
-	 * @param transSubType value to be assigned to property transSubType
+	 * @param transSubCode value to be assigned to property transSubCode
      */
-	public void setTransSubType(String transSubType) {
-		this.transSubType = transSubType;
+	public void setTransSubCode(String transSubCode) {
+		this.transSubCode = transSubCode;
 	}
 
     /**

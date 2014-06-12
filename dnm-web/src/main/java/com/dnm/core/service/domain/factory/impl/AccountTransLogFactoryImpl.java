@@ -39,8 +39,8 @@ public class AccountTransLogFactoryImpl extends AbstractDomainService implements
         model.setUserId(requestData.getUserId());
         model.setGuid(requestData.getGuid());
         model.setBizId(requestData.getBizId());
-        model.setTransCode(requestData.getTransType());
-        model.setTransSubCode(requestData.getTransSubType());
+        model.setTransCode(requestData.getTransCode());
+        model.setTransSubCode(requestData.getTransSubCode());
         model.setTransAmt(new BigDecimal(requestData.getTransAmt()));
         model.setTransCurrency(requestData.getTransCurrency());
         model.setTransTime(DateUtil.getDate(requestData.getTransTime(), DateUtil.newFormat));

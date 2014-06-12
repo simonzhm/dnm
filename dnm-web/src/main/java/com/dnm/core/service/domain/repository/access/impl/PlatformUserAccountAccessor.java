@@ -20,7 +20,7 @@ import com.dnm.core.service.domain.model.bill.PlatformModel;
 import com.dnm.core.service.domain.model.bill.PlatformUserAccountModel;
 import com.dnm.core.service.domain.model.bill.PlatformUserModel;
 import com.dnm.core.service.domain.repository.access.AbstractDataAccessor;
-import com.dnm.facade.constant.SubAccountTypeEnum;
+import com.dnm.facade.constant.ThirdAccountTypeEnum;
 
 /**
  * 平台用户账户映射数据访问器
@@ -50,8 +50,8 @@ public class PlatformUserAccountAccessor extends AbstractDataAccessor {
             Map<String, PlatformUserAccountModel> accountMap = puModel
                 .getPlatformUserAccountModel();
             //这里按顺序开户
-            List<SubAccountTypeEnum> types = SubAccountTypeEnum.getPlatformSubAccountTypes();
-            for (SubAccountTypeEnum type : types) {
+            List<ThirdAccountTypeEnum> types = ThirdAccountTypeEnum.getPlatformSubAccountTypes();
+            for (ThirdAccountTypeEnum type : types) {
                 puaDOs.add(convert2DO(accountMap.get(type.getCode())));
             }
         }

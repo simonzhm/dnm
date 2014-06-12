@@ -21,11 +21,17 @@ public enum TransCodeEnum {
     /** 回款 */
     CASHBACK("32", "回款"),
 
+    /** 费用 */
+    COST("41", "费用"),
+
+    /** 奖励 */
+    PRICE("42", "奖励"),
+
     /** 充值 */
-    DEPOSIT("41", "充值"),
+    DEPOSIT("51", "充值"),
 
     /** 提现 */
-    WITHDRAW("51", "提现"),
+    WITHDRAW("52", "提现"),
 
     ;
 

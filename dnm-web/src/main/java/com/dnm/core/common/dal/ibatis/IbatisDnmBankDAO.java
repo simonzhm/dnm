@@ -43,7 +43,7 @@ package com.dnm.core.common.dal.ibatis;import org.springframework.orm.ibatis.s
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>select id, user_id, bank_id, bank_name, direction, account_id, bill_date, repay_date, gmt_create, gmt_modified from dnm_account where (id = ?)</tt>
+	 *  <tt>select id, user_id, bank_id, bank_name, direction, account_id, bill_date, repay_date, gmt_create, gmt_modified from dnm_bank where (id = ?)</tt>
 	 *
 	 *	@param id
 	 *	@return DnmBankDO

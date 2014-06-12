@@ -13,8 +13,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
-
 import com.dnm.biz.checker.DefaultRequestChecker;
 import com.dnm.biz.checker.RequestChecker;
 import com.dnm.core.cache.AbstractLocalCache;
@@ -36,10 +34,6 @@ import com.dnm.facade.request.BaseRequestOrder;
  * @version $Id: RequestOrderCache.java, v 0.1 2014-4-30 下午11:26:48 hongmin.zhonghm Exp $
  */
 public class RequestOrderCacheImpl extends AbstractLocalCache implements RequestOrderCache {
-
-    /** 日志 */
-    protected static final Logger       LOGGER              = Logger
-                                                                .getLogger(RequestOrderCacheImpl.class);
 
     /** 请求单据检查器缓存 */
     private Map<String, RequestChecker> checkerMap          = new HashMap<String, RequestChecker>();

@@ -80,6 +80,23 @@ public interface DnmAccountDAO {
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
+	 *  <tt>select user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create, gmt_modified from dnm_account where ((user_id = ?) AND (sub_account_type = ?))</tt>
+	 *
+	 *	@param userId
+	 *	@param subAccountType
+	 *	@return DnmAccountDO
+	 *	@throws DataAccessException
+	 */	 
+    public DnmAccountDO loadByUserIdType(String userId, String subAccountType) throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>dnm_account</tt> for records.
+	 *
+   	 *  <p>
+   	 *  Description for this operation is<br>
+   	 *  <tt></tt>
+	 *  <p>
+	 *  The sql statement for this operation is <br>
 	 *  <tt>select user_id, account_id, account_name, account_type, sub_account_type, balance, currency, direction, gmt_create, gmt_modified from dnm_account where (account_id = ?)</tt>
 	 *
 	 *	@param accountId

@@ -51,7 +51,7 @@
     <!-- mapped statement for IbatisDnmBankDAO.load -->
     <select id="MS-DNM-BANK-LOAD" resultMap="RM-DNM-BANK" >
     <![CDATA[
-        select /*MS-DNM-DNM-BANK-LOAD*/ id, user_id, bank_id, bank_name, direction, account_id, bill_date, repay_date, gmt_create, gmt_modified from dnm_account where (id = #value#)
+        select /*MS-DNM-DNM-BANK-LOAD*/ id, user_id, bank_id, bank_name, direction, account_id, bill_date, repay_date, gmt_create, gmt_modified from dnm_bank where (id = #value#)
     ]]>
     </select>
 

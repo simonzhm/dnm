@@ -52,9 +52,9 @@ public class AccountLogModel extends DomainModel {
             "AccountLogModel.direction is empty");
         AssertUtil.notBlank(account, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountLogModel.account is empty");
-        AssertUtil.isTrue(AmountUtil.isGreaterThanZero(transAmt),
-            ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
-            "AccountLogModel.transAmt must be greater than 0");
+        AssertUtil
+            .isTrue(AmountUtil.isNotEqualZero(transAmt), ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
+                "AccountLogModel.transAmt must not equals 0");
         AssertUtil.notNull(balance, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "AccountLogModel.balance is empty");
     }

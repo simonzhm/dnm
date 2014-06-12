@@ -74,10 +74,16 @@ public enum ResultCodeEnum {
     ACCOUNT_NOT_EXISTS("DNM_RS_510012000", "account not exists"),
     /** 账户不合法 */
     ACCOUNT_ILLEGAL("DNM_RS_510012001", "account illegal"),
+    /** 账户查询失败 */
+    ACCOUNT_QUERY_FAIL("DNM_RS_510012002", "account query fail"),
 
     /**================== 投标业务处理错误  3xxx ====================*/
-    /** 投标不合法 */
-    INVEST_ILLEGAL("DNM_RS_510013000", "invest illegal"),
+    /** 用户业务处理错误 */
+    INVEST_BIZ_ERROR("DNM_RS_510011000", "user biz process error"),
+
+    /**================== 账务处理错误  4xxx ====================*/
+    /** 记账失败 */
+    ACCOUNT_TRANS_FAIL("DNM_RS_510014000", "account transfer fail"),
 
     ;
 

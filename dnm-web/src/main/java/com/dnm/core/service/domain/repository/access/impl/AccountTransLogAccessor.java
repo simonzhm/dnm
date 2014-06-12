@@ -46,8 +46,8 @@ public class AccountTransLogAccessor extends AbstractDataAccessor {
             accountTransLogDO.setUserId(model.getUserId());
             accountTransLogDO.setGuid(model.getGuid());
             accountTransLogDO.setBizId(model.getBizId());
-            accountTransLogDO.setTransType(model.getTransCode());
-            accountTransLogDO.setTransSubType(model.getTransSubCode());
+            accountTransLogDO.setTransCode(model.getTransCode());
+            accountTransLogDO.setTransSubCode(model.getTransSubCode());
             accountTransLogDO.setTransAmt(model.getTransAmt());
             accountTransLogDO.setTransCurrency(model.getTransCurrency());
             accountTransLogDO.setTransTime(model.getTransTime());

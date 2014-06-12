@@ -6,6 +6,7 @@ package com.dnm.facade.api;
 
 import com.dnm.facade.anotation.FacadeApi;
 import com.dnm.facade.request.OpenAccountRequest;
+import com.dnm.facade.request.QueryAccountByUserIdTypeRequest;
 import com.dnm.facade.request.QueryAccountRequest;
 import com.dnm.facade.result.AccountResult;
 
@@ -22,7 +23,7 @@ public interface AccountServiceFacade {
      * 开户
      * 
      * @param requestData
-     * @return 账户号
+     * @return 账户
      */
     public AccountResult openAccount(OpenAccountRequest requestData);
 
@@ -30,7 +31,15 @@ public interface AccountServiceFacade {
      * 查询账户
      * 
      * @param requestData
-     * @return 账户号
+     * @return 账户
      */
     public AccountResult queryAccount(QueryAccountRequest requestData);
+
+    /**
+     * 根据userId和子账户类型查询账户
+     * 
+     * @param requestData
+     * @return 账户
+     */
+    public AccountResult queryAccountByUserIdType(QueryAccountByUserIdTypeRequest requestData);
 }
