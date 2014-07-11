@@ -1,0 +1,1 @@
+cmd /k  mvn eclipse:eclipse -DdownloadSources=true

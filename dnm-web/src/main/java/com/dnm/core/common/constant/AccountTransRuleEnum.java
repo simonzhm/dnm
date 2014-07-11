@@ -53,27 +53,32 @@ public enum AccountTransRuleEnum {
             ThirdAccountTypeEnum.PLATFORM_BALANCE),
 
     /** 线下充值奖励发放 */
-    OFFLINE_PRICE(SubAccountTransCodeEnum.OFFLINE_PRICE, ThirdAccountTypeEnum.PLATFORM_BALANCE,
+    OFFLINE_PRICE(SubAccountTransCodeEnum.OFFLINE_PRICE_IMED, ThirdAccountTypeEnum.PLATFORM_BALANCE,
                   ThirdAccountTypeEnum.PLATFORM_PRICE),
 
-    /** 投奖发放 */
-    INVEST_PRICE(SubAccountTransCodeEnum.INVEST_PRICE, ThirdAccountTypeEnum.PLATFORM_BALANCE,
+    /** 投奖实时发放 */
+    INVEST_PRICE(SubAccountTransCodeEnum.INVEST_PRICE_IMED, ThirdAccountTypeEnum.PLATFORM_BALANCE,
                  ThirdAccountTypeEnum.PLATFORM_PRICE),
 
     /** 利息发放 */
     INTEREST(SubAccountTransCodeEnum.INTEREST, ThirdAccountTypeEnum.PLATFORM_DUEIN_INTEREST,
              ThirdAccountTypeEnum.PLATFORM_INTEREST),
 
-    /** 罚息发放 */
-    OVERDUE_INTEREST(SubAccountTransCodeEnum.OVERDUE_INTEREST,
+    /** 罚息实时发放 */
+    OVERDUE_INTEREST(SubAccountTransCodeEnum.OVERDUE_INTEREST_IMED,
                      ThirdAccountTypeEnum.PLATFORM_BALANCE, ThirdAccountTypeEnum.PLATFORM_INTEREST),
 
     /** 续奖发放 */
     RE_INVEST_PRICE(SubAccountTransCodeEnum.RE_INVEST_PRICE,
                     ThirdAccountTypeEnum.PLATFORM_DUEIN_PRICE, ThirdAccountTypeEnum.PLATFORM_PRICE),
+                    
+    /** 续奖实时发放 */
+    RE_INVEST_PRICE_IMED(SubAccountTransCodeEnum.RE_INVEST_PRICE_IMED,
+                    ThirdAccountTypeEnum.PLATFORM_BALANCE, ThirdAccountTypeEnum.PLATFORM_PRICE),
 
-    /** 活动奖发放 */
-    PROMOTION_PRICE(SubAccountTransCodeEnum.PROMOTION_PRICE, ThirdAccountTypeEnum.PLATFORM_BALANCE,
+
+    /** 活动奖实时发放 */
+    PROMOTION_PRICE(SubAccountTransCodeEnum.PROMOTION_PRICE_IMED, ThirdAccountTypeEnum.PLATFORM_BALANCE,
                     ThirdAccountTypeEnum.PLATFORM_PRICE),
 
     /** 线上借记卡充值 */

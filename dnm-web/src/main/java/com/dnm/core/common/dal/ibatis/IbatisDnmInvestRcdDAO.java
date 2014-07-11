@@ -21,7 +21,7 @@ package com.dnm.core.common.dal.ibatis;import org.springframework.orm.ibatis.s
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>insert into dnm_invest_rcd(id,user_id,platform_user_id,period,period_type,repay_method,invest_amt,invest_date,interest_rate,interest_amt,cost_amt,price_amt,fee_rate,is_finish,remark,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
+	 *  <tt>insert into dnm_invest_rcd(id,platform_user_id,period,period_type,repay_method,invest_amt,invest_date,interest_rate_type,interest_rate,interest_amt,cost_amt,price_amt,fee_rate,is_finish,memo,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
 	 *
 	 *	@param dnmInvestRcd
 	 *	@return String
@@ -43,7 +43,7 @@ package com.dnm.core.common.dal.ibatis;import org.springframework.orm.ibatis.s
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>select id, user_id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, remark, gmt_create, gmt_modified from dnm_invest_rcd where (id = ?)</tt>
+	 *  <tt>select id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate_type, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, memo, gmt_create, gmt_modified from dnm_invest_rcd where (id = ?)</tt>
 	 *
 	 *	@param id
 	 *	@return DnmInvestRcdDO

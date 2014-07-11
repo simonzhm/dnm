@@ -10,6 +10,7 @@ import com.dnm.core.processor.split.SplitProcessorFactory;
 import com.dnm.core.service.domain.AbstractDomainService;
 import com.dnm.core.service.domain.InvestDomainService;
 import com.dnm.core.service.domain.model.bill.InvestRecordModel;
+import com.dnm.core.service.domain.repository.InvestRecordRepository;
 
 /**
  * 投标领域服务
@@ -22,6 +23,10 @@ public class InvestDomainServiceImpl extends AbstractDomainService implements In
     /** 拆标工厂 */
     @Resource
     protected SplitProcessorFactory splitProcessorFactory;
+    
+    /** 投标仓储 */
+    @Resource
+    protected InvestRecordRepository investRecordRepository;
 
     /** 
      * @see com.dnm.core.service.domain.InvestDomainService#invest(com.dnm.core.service.domain.model.bill.InvestRecordModel)
@@ -30,6 +35,9 @@ public class InvestDomainServiceImpl extends AbstractDomainService implements In
     public void invest(InvestRecordModel model) {
         //拆标并记账
         split(model);
+        
+        //存储业务数据
+        investRecordRepository.store(model);
     }
 
     /**

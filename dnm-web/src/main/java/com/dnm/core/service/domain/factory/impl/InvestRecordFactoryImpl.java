@@ -120,6 +120,7 @@ public class InvestRecordFactoryImpl extends AbstractDomainService implements In
             .setTransRate(CalculateUtil.getRateNonPercent(priceCostRequestData.getRate()));
         priceCostModel.setTransAmt(CalculateUtil.calcAmt(priceCostRequestData.getOrigAmt(),
             priceCostRequestData.getRate(), priceCostRequestData.getActualAmt()));
+        priceCostModel.setIsFinish(priceCostRequestData.getIsFinish());
         priceCostModel.setGmtCreate(date);
         priceCostModel.setGmtModified(date);
 

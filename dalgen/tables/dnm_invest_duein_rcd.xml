@@ -11,7 +11,7 @@
 		<sql>
 			<![CDATA[
 					insert into dnm_invest_duein_rcd
-					  (id, rcd_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified)
+					  (id, invest_record_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified)
 					values
 					  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         	]]>
@@ -21,7 +21,7 @@
 	<operation name="load">
 		<sql>
 			<![CDATA[
-					select id, rcd_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified
+					select id, invest_record_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified
 					from dnm_invest_duein_rcd
 					where id = ?
         	]]>
