@@ -15,11 +15,12 @@ import java.util.List;
 public interface SubTransCodeMapCache {
 
     /**
-     * 根据业务层子交易码射账务子交易码
+     * 根据业务层子交易码以及是否及时到账映射账务子交易码
      * 
      * @param transSubCode
+     * @param isFinish
      * @return
      */
-    public List<String> getAccountTransSubCodes(String transSubCode);
+    public List<String> getAccountTransSubCodes(String transSubCode, String isFinish);
 
 }

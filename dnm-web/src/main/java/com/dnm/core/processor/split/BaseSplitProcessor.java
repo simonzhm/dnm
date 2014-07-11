@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.util.CollectionUtils;
+
 import com.dnm.biz.helper.ResultHelper;
 import com.dnm.core.cache.SubTransCodeMapCache;
 import com.dnm.core.common.constant.AccountTransRuleEnum;
@@ -85,23 +87,23 @@ public abstract class BaseSplitProcessor implements SplitProcessor {
     protected void accountTransPriceCost(InvestRecordModel mainRcd, InvestPriceCostModel priceCost) {
         String transSubCode = priceCost.getTransSubCode();
         String isFinish = priceCost.getIsFinish();
-        List<String> accountTransSubCodes = subTransCodeMapCache.getAccountTransSubCodes(transSubCode);
-        
-        AssertUtil.notEmpty(accountTransSubCodes, ResultCodeEnum.TRANS_CODE_MAP_ERROR, "biz transcode = " + transSubCode + ",isFinish = " + isFinish);
-        
-        for (String atsb : accountTransSubCodes) {
-            TransInfo transInfo = new TransInfo();
-            transInfo.setBizId(priceCost.getBizId());
-            transInfo.setTransSubCode(atsb);
-            transInfo.setTransAmt(priceCost.getTransAmt());
-            transInfo.setTransCurrency(priceCost.getTransCurrency());
-            transInfo.setMemo(priceCost.getMemo());
+        List<String> accountTransSubCodes = subTransCodeMapCache.getAccountTransSubCodes(
+            transSubCode, isFinish);
+        if (!CollectionUtils.isEmpty(accountTransSubCodes)) {
+            for (String atsb : accountTransSubCodes) {
+                TransInfo transInfo = new TransInfo();
+                transInfo.setBizId(priceCost.getBizId());
+                transInfo.setTransSubCode(atsb);
+                transInfo.setTransAmt(priceCost.getTransAmt());
+                transInfo.setTransCurrency(priceCost.getTransCurrency());
+                transInfo.setMemo(priceCost.getMemo());
 
-            AccountTransferRequest request = genAccountTransferRequest(mainRcd, transInfo);
+                AccountTransferRequest request = genAccountTransferRequest(mainRcd, transInfo);
 
-            AssertUtil.isTrue(
-                ResultHelper.isSuccess(accountTransferServiceFacade.transfer(request)),
-                ResultCodeEnum.ACCOUNT_TRANS_FAIL, "price cost request data:" + request);
+                AssertUtil.isTrue(
+                    ResultHelper.isSuccess(accountTransferServiceFacade.transfer(request)),
+                    ResultCodeEnum.ACCOUNT_TRANS_FAIL, "price cost request data:" + request);
+            }
         }
     }
 

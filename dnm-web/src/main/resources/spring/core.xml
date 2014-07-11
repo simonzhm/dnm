@@ -42,18 +42,6 @@
 				<entry key="PLATFORM_USER_ACCOUNT">
 					<ref bean="platformUserAccountAccessor"/>
 				</entry>
-				<entry key="INVEST_RCD">
-					<ref bean="investRcdAccessor"/>
-				</entry>
-				<entry key="INVEST_DUEIN_RCD">
-					<ref bean="investDueinRcdAccessor"/>
-				</entry>
-				<entry key="INVEST_FROM_ACCOUNT">
-					<ref bean="investFromAccountAccessor"/>
-				</entry>
-				<entry key="INVEST_PRICE_COST">
-					<ref bean="investPriceCostAccessor"/>
-				</entry>
 				<entry key="ACCOUNT_TRANS_LOG">
 					<ref bean="accountTransLogAccessor"/>
 				</entry>
@@ -72,10 +60,6 @@
 	<bean id="platformAccessor" class="com.dnm.core.service.domain.repository.access.impl.PlatformAccessor"/>
 	<bean id="platformUserAccessor" class="com.dnm.core.service.domain.repository.access.impl.PlatformUserAccessor"/>
 	<bean id="platformUserAccountAccessor" class="com.dnm.core.service.domain.repository.access.impl.PlatformUserAccountAccessor"/>
-	<bean id="investRcdAccessor" class="com.dnm.core.service.domain.repository.access.impl.InvestRcdAccessor"/>
-	<bean id="investDueinRcdAccessor" class="com.dnm.core.service.domain.repository.access.impl.InvestDueinRcdAccessor"/>
-	<bean id="investFromAccountAccessor" class="com.dnm.core.service.domain.repository.access.impl.InvestFromAccountAccessor"/>
-	<bean id="investPriceCostAccessor" class="com.dnm.core.service.domain.repository.access.impl.InvestPriceCostAccessor"/>
 	<bean id="accountTransLogAccessor" class="com.dnm.core.service.domain.repository.access.impl.AccountTransLogAccessor"/>
 	<bean id="accountLogAccessor" class="com.dnm.core.service.domain.repository.access.impl.AccountLogAccessor"/>
 	
@@ -92,7 +76,6 @@
 	<bean id="accountRepository" class="com.dnm.core.service.domain.repository.impl.AccountRepositoryImpl" parent="abstractDomainService"/>
 	<bean id="bankRepository" class="com.dnm.core.service.domain.repository.impl.BankRepositoryImpl" parent="abstractDomainService"/>
 	<bean id="platformRepository" class="com.dnm.core.service.domain.repository.impl.PlatformRepositoryImpl" parent="abstractDomainService"/>
-	<bean id="investRecordRepository" class="com.dnm.core.service.domain.repository.impl.InvestRecordRepositoryImpl" parent="abstractDomainService"/>
 	<bean id="accountTransLogRepository" class="com.dnm.core.service.domain.repository.impl.AccountTransLogRepositoryImpl" parent="abstractDomainService"/>
 	<!-- 领域服务结束 -->
 	

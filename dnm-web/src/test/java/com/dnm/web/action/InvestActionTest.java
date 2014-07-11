@@ -52,12 +52,12 @@ public class InvestActionTest extends BaseActionTest {
         request.setParameter("requestData.investPriceList[0].rate", "0.1");
         request.setParameter("requestData.investPriceList[0].isFinish", "Y");
         request.setParameter("requestData.investPriceList[1].type",
-            SubTransCodeEnum.INVEST_PRICE_IMED.getCode());
+            SubTransCodeEnum.RE_INVEST_PRICE.getCode());
         request.setParameter("requestData.investPriceList[1].origAmt", "10000");
         request.setParameter("requestData.investPriceList[1].rate", "1.2");
         request.setParameter("requestData.investPriceList[1].isFinish", "Y");
 
-        request.setParameter("requestData.fromAccountList[0].accountId", DEST_ACCOUNT_ID);
+        request.setParameter("requestData.fromAccountList[0].accountId", "1234567890ABCDEF0156");
         request.setParameter("requestData.fromAccountList[0].amount", "10000");
         request.setParameter("requestData.isFinish", "N");
         resultStr = executeAction("/biz/invest");

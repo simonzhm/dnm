@@ -172,36 +172,4 @@ public class ReflectionUtil {
         }
         return null;
     }
-    
-    /**
-     * 获取类中的requestOrder属性
-     * @param bean
-     * @return
-     */
-    public static Field getRequestOrderField(Object bean){
-    	List<Field> fields = getDeclaredFields(bean.getClass());
-    	for(Field field : fields){
-    		if(isRequestOrderField(field)){
-    			return field;
-    		}
-    	}
-    	return null;
-    }
-    
-    /**
-     * 获取属性值
-     * @param bean
-     * @param field
-     * @return
-     */
-    public static Object getFieldValue(Object bean, Field field){
-    	field.setAccessible(true);
-    	Object value = null;
-    	try {
-			value = field.get(bean);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    	return value;
-    }
 }

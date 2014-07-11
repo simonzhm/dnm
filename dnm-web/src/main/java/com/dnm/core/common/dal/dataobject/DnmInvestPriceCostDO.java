@@ -5,7 +5,6 @@
 package com.dnm.core.common.dal.dataobject;
 
 // auto generated imports
-import java.math.BigDecimal;
 import java.util.Date;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -45,29 +44,29 @@ public class DnmInvestPriceCostDO {
 	private String bizId;
 
 	/**
-	 * This property corresponds to db column <tt>trans_code</tt>.
+	 * This property corresponds to db column <tt>trans_type</tt>.
 	 */
-	private String transCode;
+	private String transType;
 
 	/**
-	 * This property corresponds to db column <tt>trans_sub_code</tt>.
+	 * This property corresponds to db column <tt>trans_sub_type</tt>.
 	 */
-	private String transSubCode;
+	private String transSubType;
 
 	/**
 	 * This property corresponds to db column <tt>orig_trans_amt</tt>.
 	 */
-	private BigDecimal origTransAmt;
+	private long origTransAmt;
 
 	/**
 	 * This property corresponds to db column <tt>trans_rate</tt>.
 	 */
-	private BigDecimal transRate;
+	private long transRate;
 
 	/**
 	 * This property corresponds to db column <tt>trans_amt</tt>.
 	 */
-	private BigDecimal transAmt;
+	private long transAmt;
 
 	/**
 	 * This property corresponds to db column <tt>trans_currency</tt>.
@@ -151,39 +150,39 @@ public class DnmInvestPriceCostDO {
 	}
 
     /**
-     * Getter method for property <tt>transCode</tt>.
+     * Getter method for property <tt>transType</tt>.
      *
-     * @return property value of transCode
+     * @return property value of transType
      */
-	public String getTransCode() {
-		return transCode;
+	public String getTransType() {
+		return transType;
 	}
 	
 	/**
-	 * Setter method for property <tt>transCode</tt>.
+	 * Setter method for property <tt>transType</tt>.
 	 * 
-	 * @param transCode value to be assigned to property transCode
+	 * @param transType value to be assigned to property transType
      */
-	public void setTransCode(String transCode) {
-		this.transCode = transCode;
+	public void setTransType(String transType) {
+		this.transType = transType;
 	}
 
     /**
-     * Getter method for property <tt>transSubCode</tt>.
+     * Getter method for property <tt>transSubType</tt>.
      *
-     * @return property value of transSubCode
+     * @return property value of transSubType
      */
-	public String getTransSubCode() {
-		return transSubCode;
+	public String getTransSubType() {
+		return transSubType;
 	}
 	
 	/**
-	 * Setter method for property <tt>transSubCode</tt>.
+	 * Setter method for property <tt>transSubType</tt>.
 	 * 
-	 * @param transSubCode value to be assigned to property transSubCode
+	 * @param transSubType value to be assigned to property transSubType
      */
-	public void setTransSubCode(String transSubCode) {
-		this.transSubCode = transSubCode;
+	public void setTransSubType(String transSubType) {
+		this.transSubType = transSubType;
 	}
 
     /**
@@ -191,7 +190,7 @@ public class DnmInvestPriceCostDO {
      *
      * @return property value of origTransAmt
      */
-	public BigDecimal getOrigTransAmt() {
+	public long getOrigTransAmt() {
 		return origTransAmt;
 	}
 	
@@ -200,7 +199,7 @@ public class DnmInvestPriceCostDO {
 	 * 
 	 * @param origTransAmt value to be assigned to property origTransAmt
      */
-	public void setOrigTransAmt(BigDecimal origTransAmt) {
+	public void setOrigTransAmt(long origTransAmt) {
 		this.origTransAmt = origTransAmt;
 	}
 
@@ -209,7 +208,7 @@ public class DnmInvestPriceCostDO {
      *
      * @return property value of transRate
      */
-	public BigDecimal getTransRate() {
+	public long getTransRate() {
 		return transRate;
 	}
 	
@@ -218,7 +217,7 @@ public class DnmInvestPriceCostDO {
 	 * 
 	 * @param transRate value to be assigned to property transRate
      */
-	public void setTransRate(BigDecimal transRate) {
+	public void setTransRate(long transRate) {
 		this.transRate = transRate;
 	}
 
@@ -227,7 +226,7 @@ public class DnmInvestPriceCostDO {
      *
      * @return property value of transAmt
      */
-	public BigDecimal getTransAmt() {
+	public long getTransAmt() {
 		return transAmt;
 	}
 	
@@ -236,7 +235,7 @@ public class DnmInvestPriceCostDO {
 	 * 
 	 * @param transAmt value to be assigned to property transAmt
      */
-	public void setTransAmt(BigDecimal transAmt) {
+	public void setTransAmt(long transAmt) {
 		this.transAmt = transAmt;
 	}
 

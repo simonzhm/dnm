@@ -65,11 +65,9 @@ public class InvestDueinRecordModel extends DomainModel {
         AssertUtil.isTrue(StringUtil.isMeetLength(repayDate, 8),
             ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "InvestDueinRecordModel.repayDate is illegal");
-        if(!StringUtil.isEmpty(actualRepayDate)){
-	        AssertUtil.isTrue(StringUtil.isMeetLength(actualRepayDate, 8),
-	            ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
-	            "InvestDueinRecordModel.actualRepayDate is illegal");
-        }
+        AssertUtil.isTrue(StringUtil.isMeetLength(actualRepayDate, 8),
+            ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
+            "InvestDueinRecordModel.actualRepayDate is illegal");
         AssertUtil.isTrue(StringUtil.isMeetLength(isDelay, 1),
             ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL, "InvestDueinRecordModel.isDelay is illegal");
         AssertUtil

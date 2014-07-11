@@ -42,26 +42,23 @@ public enum SubAccountTransCodeEnum {
     /** 充值费用 */
     DEPOSIT_FEE(AccountTransCodeEnum.COST.getCode() + "0003", "充值费用"),
 
-    /** 线下充值奖励实时发放 */
-    OFFLINE_PRICE_IMED(AccountTransCodeEnum.INCOME.getCode() + "0001", "线下充值奖（实时）"),
+    /** 线下充值奖励发放 */
+    OFFLINE_PRICE(AccountTransCodeEnum.INCOME.getCode() + "0001", "线下充值奖"),
 
-    /** 投奖实时发放 */
-    INVEST_PRICE_IMED(AccountTransCodeEnum.INCOME.getCode() + "0002", "投标奖（实时）"),
+    /** 投奖发放 */
+    INVEST_PRICE(AccountTransCodeEnum.INCOME.getCode() + "0002", "投标奖"),
 
     /** 利息发放  */
     INTEREST(AccountTransCodeEnum.INCOME.getCode() + "0003", "利息"),
 
-    /** 罚息实时发放  */
-    OVERDUE_INTEREST_IMED(AccountTransCodeEnum.INCOME.getCode() + "0004", "罚息（实时）"),
+    /** 罚息发放  */
+    OVERDUE_INTEREST(AccountTransCodeEnum.INCOME.getCode() + "0004", "罚息"),
 
     /** 续奖发放 */
     RE_INVEST_PRICE(AccountTransCodeEnum.INCOME.getCode() + "0005", "续投奖"),
 
-    /** 活动奖实时发放 */
-    PROMOTION_PRICE_IMED(AccountTransCodeEnum.INCOME.getCode() + "0006", "活动奖（实时）"),
-    
-    /** 续奖实时发放 */
-    RE_INVEST_PRICE_IMED(AccountTransCodeEnum.INCOME.getCode() + "0007", "续投奖（实时）"),
+    /** 活动奖发放 */
+    PROMOTION_PRICE(AccountTransCodeEnum.INCOME.getCode() + "0006", "活动奖"),
 
     /** 线上借记卡充值 */
     ONLINE_DEBIT_DEPOSIT(AccountTransCodeEnum.DEPOSIT.getCode() + "0001", "线上借记卡充值"),

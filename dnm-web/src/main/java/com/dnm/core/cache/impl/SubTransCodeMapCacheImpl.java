@@ -12,8 +12,10 @@ import java.util.Map;
 import com.dnm.core.cache.AbstractLocalCache;
 import com.dnm.core.cache.SubTransCodeMapCache;
 import com.dnm.core.common.constant.CacheConstant;
+import com.dnm.core.common.util.StringUtil;
 import com.dnm.facade.constant.SubAccountTransCodeEnum;
 import com.dnm.facade.constant.SubTransCodeEnum;
+import com.dnm.facade.constant.YesOrNoEnum;
 
 /**
  * 业务层与账务层子交易码映射缓存
@@ -23,16 +25,19 @@ import com.dnm.facade.constant.SubTransCodeEnum;
  */
 public class SubTransCodeMapCacheImpl extends AbstractLocalCache implements SubTransCodeMapCache {
 
-    /** 子交易码映射缓存,key为业务层子交易码，如420001*/
+    /** 子交易码映射缓存,key为业务层子交易码+是否即时到账（可空），如420001Y*/
     private Map<String, List<String>> subCodeMap = new HashMap<String, List<String>>();
 
-
+    /** 
+     * @see com.dnm.core.cache.SubTransCodeMapCache#getAccountTransSubCodes(java.lang.String, java.lang.String)
+     */
     @Override
-	public List<String> getAccountTransSubCodes(String transSubCode) {
-        return subCodeMap.get(transSubCode);
-	}
+    public List<String> getAccountTransSubCodes(String transSubCode, String isFinish) {
+        String key = transSubCode + (StringUtil.isBlank(isFinish) ? "" : isFinish);
+        return subCodeMap.get(key);
+    }
 
-	/** 
+    /** 
      * @see com.dnm.core.cache.DnmCache#getName()
      */
     @Override
@@ -52,19 +57,23 @@ public class SubTransCodeMapCacheImpl extends AbstractLocalCache implements SubT
      */
     @Override
     protected void doInit() throws Exception {
-        //投标奖（实时）
+        //投标奖
         List<String> investPriceList = new ArrayList<String>();
-        investPriceList.add(SubAccountTransCodeEnum.INVEST_PRICE_IMED.getCode());
-        subCodeMap.put(SubTransCodeEnum.INVEST_PRICE_IMED.getCode(),investPriceList);
+        investPriceList.add(SubAccountTransCodeEnum.INVEST_PRICE.getCode());
+        subCodeMap.put(SubTransCodeEnum.INVEST_PRICE.getCode() + YesOrNoEnum.YES.getCode(),
+            investPriceList);
 
         //待收续投奖
         List<String> dueinReInvestPriceList = new ArrayList<String>();
-        dueinReInvestPriceList.add(SubAccountTransCodeEnum.DUEIN_REINVEST_PRICE.getCode());
-        subCodeMap.put(SubTransCodeEnum.RE_INVEST_PRICE.getCode(),dueinReInvestPriceList);
+        investPriceList.add(SubAccountTransCodeEnum.DUEIN_REINVEST_PRICE.getCode());
+        subCodeMap.put(SubTransCodeEnum.INVEST_PRICE.getCode() + YesOrNoEnum.NO.getCode(),
+            dueinReInvestPriceList);
 
-        //续投奖发放（实时）
+        //已收续投奖
         List<String> reInvestPriceList = new ArrayList<String>();
-        reInvestPriceList.add(SubAccountTransCodeEnum.RE_INVEST_PRICE_IMED.getCode());
-        subCodeMap.put(SubTransCodeEnum.RE_INVEST_PRICE_IMED.getCode(), reInvestPriceList);
+        investPriceList.add(SubAccountTransCodeEnum.RE_INVEST_PRICE.getCode());//发放
+        investPriceList.add(SubAccountTransCodeEnum.REINVEST_PRICE_RECEIVE.getCode());//回款
+        subCodeMap.put(SubTransCodeEnum.INVEST_PRICE.getCode() + YesOrNoEnum.YES.getCode(),
+            reInvestPriceList);
     }
 }

@@ -15,7 +15,7 @@
 		<sql>
 			<![CDATA[
 					insert into dnm_invest_rcd
-					  (id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate_type, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, memo, gmt_create, gmt_modified)
+					  (id, user_id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, remark, gmt_create, gmt_modified)
 					values
 					  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         	]]>
@@ -25,7 +25,7 @@
 	<operation name="load">
 		<sql>
 			<![CDATA[
-					select id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate_type, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, memo, gmt_create, gmt_modified
+					select id, user_id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, remark, gmt_create, gmt_modified
 					from dnm_invest_rcd
 					where id = ?
         	]]>

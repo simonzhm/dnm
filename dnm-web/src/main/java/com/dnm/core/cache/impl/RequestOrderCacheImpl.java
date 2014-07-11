@@ -40,9 +40,6 @@ public class RequestOrderCacheImpl extends AbstractLocalCache implements Request
 
     /** facade方法与请求单据映射缓存 */
     private Map<Method, Class<?>>       mtdReqOrderClassMap = new HashMap<Method, Class<?>>();
-    
-    /** action与请求单据字段映射缓存 */
-    private Map<String, Field>       actionReqOrderFieldMap = new HashMap<String, Field>();
 
     /** requestOrder需要进行校验的注解属性 */
     private Map<String, List<Field>>    checkFieldMap       = new HashMap<String, List<Field>>();
@@ -86,12 +83,7 @@ public class RequestOrderCacheImpl extends AbstractLocalCache implements Request
         return mtdReqOrderClassMap.get(method);
     }
 
-    @Override
-	public Field getRequestOrderField(String actionName) {
-		return actionReqOrderFieldMap.get(actionName);
-	}
-
-	/** 
+    /** 
      * @see com.dnm.core.cache.RequestOrderCache#addRequestOrder(java.lang.Class)
      */
     @Override
@@ -133,26 +125,7 @@ public class RequestOrderCacheImpl extends AbstractLocalCache implements Request
         }
     }
 
-
-	@Override
-	public void addActionNameRequestOrderMap(String actionName,
-			Field requestOrderField) {
-		Field reqOrderField = actionReqOrderFieldMap.get(actionName);
-    	if (reqOrderField == null) {
-            synchronized (actionReqOrderFieldMap) {
-                reqOrderField = actionReqOrderFieldMap.get(actionName);
-                if (reqOrderField != null) {
-                    //如果从缓存中通过方法能获取到请求单据，则请求单据相关缓存必定已经初始化
-                    return;
-                } else {
-                	actionReqOrderFieldMap.put(actionName, requestOrderField);
-                }
-            }
-        }
-		
-	}
-
-	/** 
+    /** 
      * @see com.dnm.core.cache.AbstractLocalCache#doInit()
      */
     @Override

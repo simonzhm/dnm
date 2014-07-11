@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.dnm.core.common.resultcode.ResultCodeEnum;
+import com.dnm.facade.api.UserServiceFacade;
+import com.dnm.facade.request.RegisterRequest;
 
 /**
  * 登陆测试用例
@@ -31,9 +33,22 @@ public class LoginActionTest extends BaseActionTest {
     @Test
     public void testLoginSuccess() throws Exception {
 
+        UserServiceFacade userServiceFacade = (UserServiceFacade) applicationContext
+            .getBean("userServiceFacade");
+
+        //初始化数据
+        String username = this.getUniStr("zhm");
+        String password = this.getUniStr("pwd");
+        String email = this.getUniStr("zhm@163.com");
+        RegisterRequest requestData = new RegisterRequest();
+        requestData.setUsername(username);
+        requestData.setPassword(password);
+        requestData.setEmail(email);
+        userServiceFacade.regist(requestData);
+
         //执行
-        request.setParameter("requestData.username", USER_NAME);
-        request.setParameter("requestData.password", USER_PWD);
+        request.setParameter("requestData.username", username);
+        request.setParameter("requestData.password", password);
         String resultStr = executeAction("/user/login");
 
         LOGGER.info("test result:" + resultStr);

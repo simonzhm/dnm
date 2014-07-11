@@ -74,7 +74,7 @@ public class ResultHelper {
         if (e != null && e instanceof DnmException) {
             DnmException de = (DnmException) e;
             result.setResultCode(de.getResultCode().getCode());
-            result.setResulstMsg(de.getMessage());
+            result.setResulstMsg(de.getResultCode().getDescription() + ":" + de.getMessage());
         } else if (e instanceof DuplicateKeyException) {
             result.setResultCode(ResultCodeEnum.DUPLICATE_KEY.getCode());
             result.setResulstMsg(StringUtil.isBlank(msg) ? e.getMessage() : msg);

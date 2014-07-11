@@ -45,7 +45,7 @@ public class DnmException extends RuntimeException {
      * @param resultCode Òì³£½á¹ûÂë
      */
     public DnmException(ResultCodeEnum resultCode, String msg) {
-        super(resultCode.getDescription() + "," + msg);
+        super(msg);
         this.resultCode = resultCode;
     }
 

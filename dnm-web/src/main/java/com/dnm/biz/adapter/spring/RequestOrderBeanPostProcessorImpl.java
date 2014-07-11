@@ -4,7 +4,6 @@
  */
 package com.dnm.biz.adapter.spring;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import javax.annotation.Resource;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import com.dnm.core.cache.RequestOrderCache;
 import com.dnm.core.common.util.ReflectionUtil;
 import com.dnm.facade.request.BaseRequestOrder;
-import com.dnm.web.action.BaseAction;
 
 /**
  * spring bean加载完成的后续处理
@@ -59,14 +57,6 @@ public class RequestOrderBeanPostProcessorImpl implements BeanPostProcessor {
                 }
             }
         }
-        
-        //添加action和单据映射缓存
-        if(ReflectionUtil.isAssignableFrom(BaseAction.class, bean.getClass())){
-            Field f = ReflectionUtil.getRequestOrderField(bean);
-            if(f != null){
-            	requestOrderCache.addActionNameRequestOrderMap(ReflectionUtil.getFullName(bean), f);
-            }
-        }	
 
         return bean;
     }

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.dnm.facade.constant.AccountDirectionEnum;
 import com.dnm.facade.constant.CurrencyEnum;
-import com.dnm.facade.constant.ThirdAccountTypeEnum;
+import com.dnm.facade.constant.SecondAccountTypeEnum;
 
 /**
  * 开户测试用例
@@ -43,7 +43,7 @@ public class AccountActionTest extends BaseActionTest {
 
         request.removeAllParameters();
         request.setParameter("requestData.accountName", this.getUniStr("招行"));
-        request.setParameter("requestData.accountType", ThirdAccountTypeEnum.CREDIT_CARD.getCode());
+        request.setParameter("requestData.accountType", SecondAccountTypeEnum.CREDIT_CARD.getCode());
         request.setParameter("requestData.balance", "20000");
         request.setParameter("requestData.currency", CurrencyEnum.CNY.getCode());
         request.setParameter("requestData.direction", AccountDirectionEnum.DEBIT.getCode());

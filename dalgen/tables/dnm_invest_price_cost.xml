@@ -5,17 +5,15 @@
 
 <table sqlname="DNM_INVEST_PRICE_COST" dummypk="ID">
 
-<column name="orig_trans_amt" javatype="java.math.BigDecimal"/>
-<column name="trans_rate" javatype="java.math.BigDecimal"/>
-<column name="trans_amt" javatype="java.math.BigDecimal"/>
+<column name="amount" javatype="java.math.BigDecimal"/>
 
 	<operation name="insert">
 		<sql>
 			<![CDATA[
 					insert into dnm_invest_price_cost
-					  (id, guid, biz_id, trans_code, trans_sub_code, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, is_finish, gmt_create, gmt_modified)
+					  (id, guid, biz_id, trans_type, trans_sub_type, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, gmt_create, gmt_modified)
 					values
-					  (?, ?, ?, ?, ?, ? , ?, ?, ? ,?, ?, ?, ?)
+					  (?, ?, ?, ?, ?, ? , ?, ?, ? ,?, ?, ?)
         	]]>
 		</sql>
 	</operation>
@@ -23,7 +21,7 @@
 	<operation name="load">
 		<sql>
 			<![CDATA[
-					select id, guid, biz_id, trans_code, trans_sub_code, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, is_finish, gmt_create, gmt_modified
+					select id, guid, biz_id, trans_type, trans_sub_type, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, gmt_create, gmt_modified
 					from dnm_invest_price_cost
 					where id = ?
         	]]>

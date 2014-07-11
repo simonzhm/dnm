@@ -4,17 +4,14 @@
  */
 package com.dnm.web.action;
 
-import java.lang.reflect.Field;
 import java.util.Map;
-
-import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.dnm.biz.helper.ResultHelper;
-import com.dnm.core.cache.RequestOrderCache;
 import com.dnm.core.common.util.ReflectionUtil;
+import com.dnm.facade.request.BaseRequestOrder;
 import com.dnm.facade.request.BaseSessionRequestOrder;
 import com.dnm.facade.result.BaseResult;
 import com.opensymphony.xwork2.ActionSupport;
@@ -41,10 +38,6 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
 
     /** web sessgion */
     protected Map<String, Object> session;
-    
-    /** 请求单据缓存 */
-    @Resource
-    private RequestOrderCache requestOrderCache;
 
     /** 
      * @see com.opensymphony.xwork2.ActionSupport#execute()
@@ -54,13 +47,10 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("execute " + ReflectionUtil.getSimpleName(this));
         }
-        Field f = requestOrderCache.getRequestOrderField(ReflectionUtil.getFullName(this));
-        if(f != null){
-	        Object request = ReflectionUtil.getFieldValue(this, f);
-	        //如果属于带session的请求单据，则自动给userId赋值，前面的session校验拦截器能保证这里的session不会为空，
-	        if (request != null && request instanceof BaseSessionRequestOrder) {
-	            ((BaseSessionRequestOrder) request).setUserId(session.get(USER_SESSION_KEY).toString());
-	        }
+        BaseRequestOrder request = getRequestData();
+        //如果属于带session的请求单据，则自动给userId赋值，前面的session校验拦截器能保证这里的session不会为空，
+        if (request != null && request instanceof BaseSessionRequestOrder) {
+            ((BaseSessionRequestOrder) request).setUserId(session.get(USER_SESSION_KEY).toString());
         }
 
         BaseResult result = getResponseData();
@@ -79,6 +69,14 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
      */
     abstract protected void doExecute();
 
+    /**
+     * 获取结果
+     * 
+     * @return
+     */
+    public BaseRequestOrder getRequestData() {
+        return null;
+    }
 
     /**
      * 获取结果
