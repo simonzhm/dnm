@@ -31,6 +31,7 @@ import com.dnm.facade.constant.ThirdAccountTypeEnum;
 import com.dnm.facade.request.AddPlatformUsersRequest;
 import com.dnm.facade.request.PlatformUserRequest;
 import com.dnm.facade.request.QueryAccountByUserIdTypeRequest;
+import com.dnm.facade.request.QueryAccountRequest;
 import com.dnm.facade.result.AccountResult;
 
 /**
@@ -62,7 +63,7 @@ public class BaseActionTest extends StrutsSpringTestCase {
     protected static final String SRC_ACCOUNT_ID    = "1234567890ABCDEF0156";
 
     /** 通用目标账号 */
-    protected static final String DEST_ACCOUNT_ID   = "FEDCBA09876543210156";
+    protected static String DEST_ACCOUNT_ID   = null;
 
     @Override
     protected String[] getContextLocations() {
@@ -158,19 +159,38 @@ public class BaseActionTest extends StrutsSpringTestCase {
             platformServiceFacade.addPlatformUsers(addPlatformUsersRequest);
         }
 
-        //查找可用余额
-        QueryAccountByUserIdTypeRequest queryAccountByUserIdTypeRequest = new QueryAccountByUserIdTypeRequest();
-        queryAccountByUserIdTypeRequest.setUserId(USER_ID);
-        queryAccountByUserIdTypeRequest.setSubAccountType("200101");
+        
         AccountServiceFacade accountServiceFacade = (AccountServiceFacade) applicationContext
             .getBean("accountServiceFacade");
-        AccountResult result = accountServiceFacade
-            .queryAccountByUserIdType(queryAccountByUserIdTypeRequest);
-        AccountModel accountModel = AccountHelper.convert2Model(result.getAccount());
+        AccountResult result = null;
+        AccountModel accountModel = null;
+        
+        //更新源账号可用余额
+        QueryAccountRequest queryAccountRequest = new QueryAccountRequest();
+        queryAccountRequest.setUserId(USER_ID);
+        queryAccountRequest.setAccountId(SRC_ACCOUNT_ID);
+        result = accountServiceFacade
+            .queryAccount(queryAccountRequest);
+        accountModel = AccountHelper.convert2Model(result.getAccount());
         accountModel.setBalance(new BigDecimal("2000000"));
         accountModel.setGmtCreate(now);
         accountModel.setGmtModified(now);
         dnmAccountDAO.update(AccountConvertor.convert2DO(accountModel));
+        
+        //更新目标账号可用余额
+        QueryAccountByUserIdTypeRequest queryAccountByUserIdTypeRequest = new QueryAccountByUserIdTypeRequest();
+        queryAccountByUserIdTypeRequest.setUserId(USER_ID);
+        queryAccountByUserIdTypeRequest.setSubAccountType(ThirdAccountTypeEnum.PLATFORM_BALANCE.getCode());
+        result = accountServiceFacade
+            .queryAccountByUserIdType(queryAccountByUserIdTypeRequest);
+        accountModel = AccountHelper.convert2Model(result.getAccount());
+        accountModel.setBalance(new BigDecimal("2000000"));
+        accountModel.setGmtCreate(now);
+        accountModel.setGmtModified(now);
+        dnmAccountDAO.update(AccountConvertor.convert2DO(accountModel));
+        
 
+        //将该账号设为目标账号
+        DEST_ACCOUNT_ID = result.getAccount().getAccountId();
     }
 }

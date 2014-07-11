@@ -15,7 +15,7 @@ import com.dnm.core.service.domain.model.bill.AccountModel;
 import com.dnm.core.service.domain.model.bill.BankModel;
 import com.dnm.facade.constant.AccountDirectionEnum;
 import com.dnm.facade.constant.AccountTypeEnum;
-import com.dnm.facade.constant.SecondAccountTypeEnum;
+import com.dnm.facade.constant.ThirdAccountTypeEnum;
 import com.dnm.facade.request.AddBankRequest;
 
 /**
@@ -46,8 +46,8 @@ public class BankFactoryImpl extends AbstractDomainService implements BankFactor
 
         AccountModel aModel = new AccountModel();
         AccountDirectionEnum direction = AccountDirectionEnum.getByCode(requestData.getDirection());
-        String subAccontType = (direction == AccountDirectionEnum.CREDIT ? SecondAccountTypeEnum.CREDIT_CARD
-            .getCode() : SecondAccountTypeEnum.DEBIT_CARD.getCode());
+        String subAccontType = (direction == AccountDirectionEnum.CREDIT ? ThirdAccountTypeEnum.CREDIT_CARD
+            .getCode() : ThirdAccountTypeEnum.DEBIT_CARD.getCode());
         aModel.setUserId(requestData.getUserId());
         aModel.setBalance(new BigDecimal(requestData.getBalance()));
         aModel.setCurrency(requestData.getCurrency());

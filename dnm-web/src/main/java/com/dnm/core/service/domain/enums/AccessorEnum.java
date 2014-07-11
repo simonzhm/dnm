@@ -32,6 +32,18 @@ public enum AccessorEnum {
 
     /**平台用户账户映射访问器 */
     PLATFORM_USER_ACCOUNT("PLATFORM_USER_ACCOUNT", "平台用户账户映射访问器"),
+    
+    /**投标访问器 */
+    INVEST_RCD("INVEST_RCD", "投标访问器"),
+    
+    /**投标明细访问器 */
+    INVEST_DUEIN_RCD("INVEST_DUEIN_RCD", "投标明细访问器"),
+    
+    /**投标来源账户访问器 */
+    INVEST_FROM_ACCOUNT("INVEST_FROM_ACCOUNT", "投标来源账户访问器"),
+    
+    /**投标奖励费用访问器 */
+    INVEST_PRICE_COST("INVEST_PRICE_COST", "投标奖励费用访问器"),
 
     /**账户交易日志访问器 */
     ACCOUNT_TRANS_LOG("ACCOUNT_TRANS_LOG", "账户交易日志访问器"),

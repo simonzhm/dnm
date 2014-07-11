@@ -107,7 +107,6 @@ public class InvestRecordModel extends DomainModel {
 
         AssertUtil.notNull(platformUserModel, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "InvestRecordModel.platformUserModel is null");
-        platformUserModel.checkConsistency();
 
         AssertUtil.notNull(investDueinRecordModels, ResultCodeEnum.MODEL_INTEGRITY_CHECK_FAIL,
             "InvestRecordModel.investDueinRecordModels is null");

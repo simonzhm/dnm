@@ -32,7 +32,7 @@ public interface DnmInvestPriceCostDAO {
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>insert into dnm_invest_price_cost(id,guid,biz_id,trans_type,trans_sub_type,orig_trans_amt,trans_rate,trans_amt,trans_currency,memo,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
+	 *  <tt>insert into dnm_invest_price_cost(id,guid,biz_id,trans_code,trans_sub_code,orig_trans_amt,trans_rate,trans_amt,trans_currency,memo,is_finish,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
 	 *
 	 *	@param dnmInvestPriceCost
 	 *	@return String
@@ -48,7 +48,7 @@ public interface DnmInvestPriceCostDAO {
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>select id, guid, biz_id, trans_type, trans_sub_type, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, gmt_create, gmt_modified from dnm_invest_price_cost where (id = ?)</tt>
+	 *  <tt>select id, guid, biz_id, trans_code, trans_sub_code, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, is_finish, gmt_create, gmt_modified from dnm_invest_price_cost where (id = ?)</tt>
 	 *
 	 *	@param id
 	 *	@return DnmInvestPriceCostDO

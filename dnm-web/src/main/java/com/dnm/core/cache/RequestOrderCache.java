@@ -51,6 +51,14 @@ public interface RequestOrderCache {
     public Class<?> getRequestOrderClass(Method method);
 
     /**
+     * 根据action全类名获取请求单据类型
+     * 
+     * @param actionName 全类句
+     * @return
+     */
+    public Field getRequestOrderField(String actionName);
+    
+    /**
      * 添加请求单据
      * 
      * @param requestOrderClass
@@ -64,4 +72,11 @@ public interface RequestOrderCache {
      * @param requestOrderClass
      */
     public void addMethodRequestOrderMap(Method method, Class<?> requestOrderClass);
+    
+    /**
+     * 添加action和请求单据字段映射
+     * @param actionName
+     * @param requestOrderField
+     */
+    public void addActionNameRequestOrderMap(String actionName, Field requestOrderField);
 }

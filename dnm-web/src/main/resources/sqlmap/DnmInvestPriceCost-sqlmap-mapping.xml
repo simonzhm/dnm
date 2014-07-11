@@ -28,11 +28,11 @@
      		<result property="id" column="id" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="guid" column="guid" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="bizId" column="biz_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
-	      		<result property="transType" column="trans_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
-	      		<result property="transSubType" column="trans_sub_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
-	      		<result property="origTransAmt" column="orig_trans_amt" javaType="long" jdbcType="DECIMAL" nullValue="0"/>
-	      		<result property="transRate" column="trans_rate" javaType="long" jdbcType="DECIMAL" nullValue="0"/>
-	      		<result property="transAmt" column="trans_amt" javaType="long" jdbcType="DECIMAL" nullValue="0"/>
+	      		<result property="transCode" column="trans_code" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	      		<result property="transSubCode" column="trans_sub_code" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	      		<result property="origTransAmt" column="orig_trans_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+	      		<result property="transRate" column="trans_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+	      		<result property="transAmt" column="trans_amt" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
 	      		<result property="transCurrency" column="trans_currency" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="memo" column="memo" javaType="java.lang.String" jdbcType="VARCHAR"/>
 	      		<result property="isFinish" column="is_finish" javaType="java.lang.String" jdbcType="CHAR"/>
@@ -47,14 +47,14 @@
     <!-- mapped statement for IbatisDnmInvestPriceCostDAO.insert -->
     <insert id="MS-DNM-INVEST-PRICE-COST-INSERT">
     <![CDATA[
-        insert /*MS-DNM-DNM-INVEST-PRICE-COST-INSERT*/ into dnm_invest_price_cost(id,guid,biz_id,trans_type,trans_sub_type,orig_trans_amt,trans_rate,trans_amt,trans_currency,memo,gmt_create,gmt_modified) values (#id#, #guid#, #bizId#, #transType#, #transSubType#, #origTransAmt#, #transRate#, #transAmt#, #transCurrency#, #memo#, #gmtCreate#, #gmtModified#)
+        insert /*MS-DNM-DNM-INVEST-PRICE-COST-INSERT*/ into dnm_invest_price_cost(id,guid,biz_id,trans_code,trans_sub_code,orig_trans_amt,trans_rate,trans_amt,trans_currency,memo,is_finish,gmt_create,gmt_modified) values (#id#, #guid#, #bizId#, #transCode#, #transSubCode#, #origTransAmt#, #transRate#, #transAmt#, #transCurrency#, #memo#, #isFinish#, #gmtCreate#, #gmtModified#)
     ]]>
     </insert>
 
     <!-- mapped statement for IbatisDnmInvestPriceCostDAO.load -->
     <select id="MS-DNM-INVEST-PRICE-COST-LOAD" resultMap="RM-DNM-INVEST-PRICE-COST" >
     <![CDATA[
-        select /*MS-DNM-DNM-INVEST-PRICE-COST-LOAD*/ id, guid, biz_id, trans_type, trans_sub_type, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, gmt_create, gmt_modified from dnm_invest_price_cost where (id = #value#)
+        select /*MS-DNM-DNM-INVEST-PRICE-COST-LOAD*/ id, guid, biz_id, trans_code, trans_sub_code, orig_trans_amt, trans_rate, trans_amt, trans_currency, memo, is_finish, gmt_create, gmt_modified from dnm_invest_price_cost where (id = #value#)
     ]]>
     </select>
 

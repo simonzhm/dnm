@@ -43,9 +43,9 @@ public class AccountTransferActionTest extends BaseActionTest {
         String bizId = DBKeyUtil.complete16(new Date(), sequenceService.getDnmAccountLogSeq());
         request.setParameter("requestData.guid", bizId);
         request.setParameter("requestData.bizId", bizId);
-        request.setParameter("requestData.transType", TransCodeEnum.DEPOSIT.getCode());
+        request.setParameter("requestData.transCode", TransCodeEnum.DEPOSIT.getCode());
         request
-            .setParameter("requestData.transSubType", SubTransCodeEnum.OFFLINE_DEPOSIT.getCode());
+            .setParameter("requestData.transSubCode", SubTransCodeEnum.OFFLINE_DEPOSIT.getCode());
         request.setParameter("requestData.transAmt", "180");
         request.setParameter("requestData.transCurrency", "CNY");
         request.setParameter("requestData.transTime", "2014-05-15 11:11:11");

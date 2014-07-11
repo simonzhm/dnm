@@ -32,7 +32,7 @@ public interface DnmInvestDueinRcdDAO {
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>insert into dnm_invest_duein_rcd(id,rcd_id,period_index,repay_amt,repay_interest_amt,repay_date,actual_repay_date,is_delay,is_finish,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
+	 *  <tt>insert into dnm_invest_duein_rcd(id,invest_record_id,period_index,repay_amt,repay_interest_amt,repay_date,actual_repay_date,is_delay,is_finish,gmt_create,gmt_modified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
 	 *
 	 *	@param dnmInvestDueinRcd
 	 *	@return String
@@ -48,7 +48,7 @@ public interface DnmInvestDueinRcdDAO {
    	 *  <tt></tt>
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>select id, rcd_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified from dnm_invest_duein_rcd where (id = ?)</tt>
+	 *  <tt>select id, invest_record_id, period_index, repay_amt, repay_interest_amt, repay_date, actual_repay_date, is_delay, is_finish, gmt_create, gmt_modified from dnm_invest_duein_rcd where (id = ?)</tt>
 	 *
 	 *	@param id
 	 *	@return DnmInvestDueinRcdDO

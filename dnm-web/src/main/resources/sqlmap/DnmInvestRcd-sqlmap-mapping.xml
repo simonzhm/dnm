@@ -51,14 +51,14 @@
     <!-- mapped statement for IbatisDnmInvestRcdDAO.insert -->
     <insert id="MS-DNM-INVEST-RCD-INSERT">
     <![CDATA[
-        insert /*MS-DNM-DNM-INVEST-RCD-INSERT*/ into dnm_invest_rcd(id,user_id,platform_user_id,period,period_type,repay_method,invest_amt,invest_date,interest_rate,interest_amt,cost_amt,price_amt,fee_rate,is_finish,remark,gmt_create,gmt_modified) values (#id#, #userId#, #platformUserId#, #period#, #periodType#, #repayMethod#, #investAmt#, #investDate#, #interestRate#, #interestAmt#, #costAmt#, #priceAmt#, #feeRate#, #isFinish#, #remark#, #gmtCreate#, #gmtModified#)
+        insert /*MS-DNM-DNM-INVEST-RCD-INSERT*/ into dnm_invest_rcd(id,platform_user_id,period,period_type,repay_method,invest_amt,invest_date,interest_rate_type,interest_rate,interest_amt,cost_amt,price_amt,fee_rate,is_finish,memo,gmt_create,gmt_modified) values (#id#, #platformUserId#, #period#, #periodType#, #repayMethod#, #investAmt#, #investDate#, #interestRateType#, #interestRate#, #interestAmt#, #costAmt#, #priceAmt#, #feeRate#, #isFinish#, #memo#, #gmtCreate#, #gmtModified#)
     ]]>
     </insert>
 
     <!-- mapped statement for IbatisDnmInvestRcdDAO.load -->
     <select id="MS-DNM-INVEST-RCD-LOAD" resultMap="RM-DNM-INVEST-RCD" >
     <![CDATA[
-        select /*MS-DNM-DNM-INVEST-RCD-LOAD*/ id, user_id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, remark, gmt_create, gmt_modified from dnm_invest_rcd where (id = #value#)
+        select /*MS-DNM-DNM-INVEST-RCD-LOAD*/ id, platform_user_id, period, period_type, repay_method, invest_amt, invest_date, interest_rate_type, interest_rate, interest_amt, cost_amt, price_amt, fee_rate, is_finish, memo, gmt_create, gmt_modified from dnm_invest_rcd where (id = #value#)
     ]]>
     </select>
 

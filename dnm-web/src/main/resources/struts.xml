@@ -17,7 +17,7 @@
 
         <action name="register" class="registerAction"/>
         
-        <action name="login" class="loginAction"/>
+        <action name="login" class="com.dnm.web.action.LoginAction"/>
 
         <!-- Add additional "example" package actions here. -->
 

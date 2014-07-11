@@ -21,11 +21,14 @@ public enum SubTransCodeEnum {
     /** 普通回款 */
     NORMAL_CASHBACK(TransCodeEnum.CASHBACK.getCode() + "0001", "普通回款"),
 
-    /** 投标奖 */
-    INVEST_PRICE(TransCodeEnum.PRICE.getCode() + "0001", "投标奖"),
+    /** 投标奖(实时) */
+    INVEST_PRICE_IMED(TransCodeEnum.PRICE.getCode() + "0001", "投标奖(实时)"),
 
     /** 续投奖 */
     RE_INVEST_PRICE(TransCodeEnum.PRICE.getCode() + "0002", "续投奖"),
+    
+    /** 续投奖(实时) */
+    RE_INVEST_PRICE_IMED(TransCodeEnum.PRICE.getCode() + "0003", "续投奖(实时)"),
 
     /** 充值费用 */
     DEPOSIT_FEE(TransCodeEnum.COST.getCode() + "0001", "充值费用"),

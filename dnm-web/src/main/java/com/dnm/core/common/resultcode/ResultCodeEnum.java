@@ -61,6 +61,9 @@ public enum ResultCodeEnum {
 
     /** 数据库更新条数异常 */
     DB_UPDATE_COUNT_ERROR("DNM_RS_510019003", "db update count error"),
+    
+    /** 交易码映射错误 */
+    TRANS_CODE_MAP_ERROR("DNM_RS_510019004", "biz transcode can't map to account transcode"),
 
     //========================================================================//
     //                            业务结果码                                                                                           //
